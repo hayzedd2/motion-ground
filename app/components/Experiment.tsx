@@ -117,7 +117,6 @@ export const Card = ({ items, onClick }: CardProps) => {
     >
       <div className="flex flex-col h-full justify-between">
         <motion.div layoutId={`itemIcon${items.id}`}>
-          randoms
           <p className="text-[1.4rem]">{items.icon}</p>
         </motion.div>
         <motion.div className="flex justify-between items-center">
