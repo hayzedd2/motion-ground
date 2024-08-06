@@ -22,7 +22,7 @@ export function CardsCookieSettings() {
       </CardHeader>
       <CardContent className="grid gap-6">
         <div className="flex items-center justify-between space-x-5">
-          <Label htmlFor="necessary" className="flex flex-col space-y-1">
+          <Label htmlFor="" className="flex flex-col space-y-1">
             <span className="text-[1.2rem] my-1 text-white">Firebase</span>
             <span className="xl:text-[0.85rem] sm:text-[0.75rem] font-normal leading-snug">
               Firebase is Google&apos;s mobile platform that helps you quickly
@@ -35,7 +35,7 @@ export function CardsCookieSettings() {
           <Switch id="necessary" defaultChecked aria-label="Necessary" />
         </div>
         <div className="flex items-center justify-between space-x-5">
-          <Label htmlFor="necessary" className="flex flex-col space-y-1">
+          <Label htmlFor="" className="flex flex-col space-y-1">
             <span className="text-[1.2rem] my-1 text-white">Google analytics</span>
             <span className="xl:text-[0.85rem] sm:text-[0.75rem] font-normal leading-snug">
               Google analytics gives you the tools you need to analyze data for your business in one place.

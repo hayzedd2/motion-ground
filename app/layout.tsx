@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Newsreader } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/react";
+import { Toaster } from "sonner";
 const newsReader = Newsreader({subsets : ["latin"] , display : "swap"})
 
 export const metadata: Metadata = {
@@ -18,6 +19,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={newsReader.className}>{children}</body>
       <Analytics/>
+      <Toaster className="bg-red-700"/>
     </html>
   );
 }
