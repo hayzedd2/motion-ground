@@ -104,7 +104,7 @@ export const SideImages = ({
           {modifiedSideImageArr.map((pic, index) => {
             return (
               <motion.div
-                onClick={()=> setSelectedImage(pic)}
+                // onClick={()=> setSelectedImage(pic)}
                 key={pic.id}
                 layoutId={`picture-${pic.id}`}
                 className={`bottom-[5px] ${pic.percent} w-[4rem] bg-center box-${pic.id} h-[3.5rem]  cursor-pointer rounded-[10px]`}
