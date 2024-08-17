@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useState } from "react";
+import React, { Dispatch, SetStateAction, useState } from "react";
 import { AlbumArr } from "./AlbumContent";
 import { motion } from "framer-motion";
 import { AlbumProp } from "./type";
@@ -24,7 +24,8 @@ const Album = () => {
           })}
           <BigImage pic={selectedImg} onClick={() => setSelectedImg(null)} />
         </div>
-        {selectedImg ? <SideImages selectedImage={selectedImg} /> : null}
+        {selectedImg ? <SideImages selectedImage={selectedImg} setSelectedImage={setSelectedImg} /> : null}
+
       </div>
     </section>
   );
@@ -48,6 +49,7 @@ export const SingleImg = ({ pic, onClick }: SingleImgProp) => {
 interface BigImageProp {
   pic: AlbumProp | null;
   onClick: () => void;
+  
 }
 export const BigImage = ({ pic, onClick }: BigImageProp) => {
   return (
@@ -70,8 +72,9 @@ export const BigImage = ({ pic, onClick }: BigImageProp) => {
 };
 interface SideImageProp {
   selectedImage: AlbumProp | null;
+  setSelectedImage: Dispatch<SetStateAction<AlbumProp | null>>
 }
-export const SideImages = ({ selectedImage }: SideImageProp) => {
+export const SideImages = ({ selectedImage ,setSelectedImage}: SideImageProp) => {
   if (!selectedImage) {
     return null;
   }
@@ -89,14 +92,14 @@ export const SideImages = ({ selectedImage }: SideImageProp) => {
         {modifiedSideImageArr.map((pic, index) => {
           return (
             <motion.div
-            
               style={{
                 left: pic.percent,
                 
               }}
+              // onClick={()=> setSelectedImage(pic)}
               key={pic.id}
               layoutId={`picture-${pic.id}`}
-              className={`absolute bottom-[5px] w-[4rem] bg-center box-${pic.id} h-[3.5rem]  cursor-pointer rounded-[10px]`}
+              className={`absolute bottom-[4px] w-[4rem] bg-center box-${pic.id} h-[3.5rem]  cursor-pointer rounded-[10px]`}
             ></motion.div>
           );
         })}
