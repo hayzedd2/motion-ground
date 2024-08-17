@@ -11,5 +11,10 @@ export type AlbumProp = {
   id: number;
   image: StaticImageData;
   width: string;
+};
+export type ModifiedAlbumProp = {
+  id: number;
+  image: StaticImageData;
+  width: string;
   percent: string | undefined;
 };

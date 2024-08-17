@@ -56,7 +56,6 @@ export const BigImage = ({ pic, onClick }: BigImageProp) => {
         {!!pic && (
           <motion.div
             layoutId={`picture-${pic.id}`}
-            // style={{ backgroundImage: `url(${pic.image.src})` }}
             transition={{
               duration: 0.3,
               ease: "easeInOut",
@@ -84,21 +83,20 @@ export const SideImages = ({ selectedImage }: SideImageProp) => {
     ...item,
     percent: percentArr[index],
   }));
-  console.log(modifiedSideImageArr)
-  
-
   return (
     <>
       <AnimatePresence>
         {modifiedSideImageArr.map((pic, index) => {
           return (
             <motion.div
+            
               style={{
                 left: pic.percent,
+                
               }}
               key={pic.id}
               layoutId={`picture-${pic.id}`}
-              className={`absolute bottom-0  w-[4rem] bg-center box-${pic.id} h-[3.5rem]  cursor-pointer rounded-[10px]`}
+              className={`absolute bottom-[5px] w-[4rem] bg-center box-${pic.id} h-[3.5rem]  cursor-pointer rounded-[10px]`}
             ></motion.div>
           );
         })}
