@@ -24,8 +24,12 @@ const Album = () => {
           })}
           <BigImage pic={selectedImg} onClick={() => setSelectedImg(null)} />
         </div>
-        {selectedImg ? <SideImages selectedImage={selectedImg} setSelectedImage={setSelectedImg} /> : null}
-
+        {selectedImg ? (
+          <SideImages
+            selectedImage={selectedImg}
+            setSelectedImage={setSelectedImg}
+          />
+        ) : null}
       </div>
     </section>
   );
@@ -49,7 +53,6 @@ export const SingleImg = ({ pic, onClick }: SingleImgProp) => {
 interface BigImageProp {
   pic: AlbumProp | null;
   onClick: () => void;
-  
 }
 export const BigImage = ({ pic, onClick }: BigImageProp) => {
   return (
@@ -72,16 +75,24 @@ export const BigImage = ({ pic, onClick }: BigImageProp) => {
 };
 interface SideImageProp {
   selectedImage: AlbumProp | null;
-  setSelectedImage: Dispatch<SetStateAction<AlbumProp | null>>
+  setSelectedImage: Dispatch<SetStateAction<AlbumProp | null>>;
 }
-export const SideImages = ({ selectedImage ,setSelectedImage}: SideImageProp) => {
+export const SideImages = ({
+  selectedImage,
+  setSelectedImage,
+}: SideImageProp) => {
   if (!selectedImage) {
     return null;
   }
   const sideImageArr = AlbumArr.filter(
     (_, index) => index !== selectedImage.id - 1
   );
-  const percentArr = ["33%","45%","57%"]
+  const percentArr = [
+    "xl:left-[33%] sm:left-[80px]",
+    "xl:left-[45%] sm:left-[150px]",
+    "xl:left-[57%] sm:left-[220px]",
+  ];
+  // 80,150,220
   const modifiedSideImageArr = sideImageArr.map((item, index) => ({
     ...item,
     percent: percentArr[index],
@@ -89,20 +100,18 @@ export const SideImages = ({ selectedImage ,setSelectedImage}: SideImageProp) =>
   return (
     <>
       <AnimatePresence>
-        {modifiedSideImageArr.map((pic, index) => {
-          return (
-            <motion.div
-              style={{
-                left: pic.percent,
-                
-              }}
-              // onClick={()=> setSelectedImage(pic)}
-              key={pic.id}
-              layoutId={`picture-${pic.id}`}
-              className={`absolute bottom-[4px] w-[4rem] bg-center box-${pic.id} h-[3.5rem]  cursor-pointer rounded-[10px]`}
-            ></motion.div>
-          );
-        })}
+        <motion.div className="flex flex-col gap-3 sm:ml-0 xl:ml-3">
+          {modifiedSideImageArr.map((pic, index) => {
+            return (
+              <motion.div
+                onClick={()=> setSelectedImage(pic)}
+                key={pic.id}
+                layoutId={`picture-${pic.id}`}
+                className={`bottom-[5px] ${pic.percent} w-[4rem] bg-center box-${pic.id} h-[3.5rem]  cursor-pointer rounded-[10px]`}
+              ></motion.div>
+            );
+          })}
+        </motion.div>
       </AnimatePresence>
     </>
   );
