@@ -7,7 +7,6 @@
   box-sizing: border-box;
 }
 
-
 @layer base {
   :root {
     --background: 0 0% 100%;
@@ -74,7 +73,6 @@
   }
 }
 
-
 .indicator::-webkit-scrollbar {
   display: none;
 }
@@ -85,7 +83,7 @@
 .songbox {
   box-shadow: 0px 1px 3px 0px #97a1ac66;
 }
-.widgetcontainer{
+.widgetcontainer {
   box-shadow: 0px 6px 19px 0px #6f788326;
 }
 .widget {
@@ -106,24 +104,34 @@
   background: linear-gradient(
     184deg,
     rgba(2, 0, 36, 1) 0%,
-    rgb(205, 42, 21) 0%,
-    rgb(214, 83, 7) 96%,
-    rgb(224, 73, 57) 100%
+    rgba(255, 255, 255, 1) 0%,
+    rgba(243, 239, 239, 1) 0%,
+    rgba(255, 7, 7, 1) 100%
   );
 }
-.box-3{
+.box-3 {
   background: rgb(2, 0, 36);
   background: linear-gradient(
     184deg,
     rgba(2, 0, 36, 1) 0%,
-    rgb(8, 228, 23) 0%,
-    rgb(33, 163, 81) 96%,
-    rgb(56, 158, 43) 100%
+    rgba(255, 255, 255, 1) 0%,
+    rgba(238, 226, 226, 1) 0%,
+    rgba(58, 244, 10, 1) 100%
   );
 }
 
+.box-4 {
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    184deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(243, 239, 239, 1) 0%,
+    rgba(241, 221, 221, 1) 0%,
+    rgba(227, 239, 17, 0.9613095238095238) 100%
+  );
+}
 
-.widget-2{
+.widget-2 {
   background: rgb(2, 0, 36);
   background: linear-gradient(
     184deg,
@@ -134,14 +142,14 @@
   );
 }
 
-.widget-4{
-  background-image: url('./image/nature4.jpg');
+.widget-4 {
+  background-image: url("./image/nature4.jpg");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
 }
 
-.grid-covn{
+.grid-covn {
   display: grid;
   gap: 10px;
   grid-template-columns: repeat(1fr);

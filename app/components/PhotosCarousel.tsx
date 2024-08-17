@@ -8,7 +8,6 @@ import nature1 from "../image/nature1.jpg";
 import nature5 from "../image/nature5.jpg";
 import nature6 from "../image/nature6.jpg";
 const images = [nature4, nature3, nature2, nature5, nature6, nature1];
-import { HiOutlineCursorClick } from "react-icons/hi";
 import { motion } from "framer-motion";
 import { Dispatch, SetStateAction, useState } from "react";
 
@@ -47,7 +46,6 @@ export const AboutText = () => {
             href="htps://paystack.com/2023"
             className="underline underline-offset-2"
           >
-            {" "}
             Paystack&apos;s 2023 in review website
           </a>
         </span>

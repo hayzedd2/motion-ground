@@ -8,7 +8,7 @@ import nature6 from "../image/nature6.jpg";
 export const AlbumArr = [
   {
     id: 1,
-    image: nature1,
+    image: nature6,
     width: "col-span-2",
   },
   {
@@ -23,7 +23,7 @@ export const AlbumArr = [
   },
   {
     id: 4,
-    image: nature4,
+    image: nature5,
     width: "col-span-2",
   },
 ];

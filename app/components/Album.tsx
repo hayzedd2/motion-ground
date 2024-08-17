@@ -11,13 +11,14 @@ const Album = () => {
   return (
     <section className="py-10 xl:px-4 sm:px-0">
       <AboutText/>
-      <div className="flex relative gap-2 px-2 xl:min-w-[37.5rem] xl:max-w-[400px] min-h-[400px] max-h-[400px] overflow-hidden items-center justify-center border-2 border-[hsla(0,0%,100%,.03)] image-grid">
-        <div className="w-full grid-cols-3 gap-3 max-w-[400px] grid">
+      <div className="flex relative gap-2 px-3 xl:min-w-[37.5rem] xl:max-w-[400px] min-h-[400px] max-h-[400px] overflow-hidden items-center justify-center border-2 border-[hsla(0,0%,100%,.03)] image-grid">
+        <div className="w-full relative grid-cols-3 sm:gap-2 xl:gap-3 max-w-[400px] grid">
           {AlbumArr.map((pic) => {
             return <SingleImg key={pic.id} pic={pic} onClick={() => setSelectedImg(pic)} />;
           })}
+            <BigImage pic={selectedImg} onClick={() => setSelectedImg(null)} />
         </div>
-        <BigImage pic={selectedImg} onClick={() => setSelectedImg(null)} />
+      
         <SideImages selectedImage={selectedImg}/>
       </div>
     </section>
@@ -33,9 +34,9 @@ export const SingleImg = ({ pic, onClick }: SingleImgProp) => {
     <>
       <motion.div
         layoutId={`picture-${pic.id}`}
-        style={{ backgroundImage: `url(${pic.image.src})` }}
+        // style={{ backgroundImage: `url(${pic.image.src})` }}
         onClick={onClick}
-        className={`${pic.width} img-${pic.id} bg-cover bg-red-800 shadow-md object-cover h-[8rem] w-full cursor-pointer rounded-[10px]`}
+        className={`${pic.width} img-${pic.id} bg-cover bg-center box-${pic.id} h-[8rem] w-full cursor-pointer rounded-[10px]`}
       />
     </>
   );
@@ -51,13 +52,13 @@ export const BigImage = ({ pic, onClick }: BigImageProp) => {
         {!!pic && (
           <motion.div
             layoutId={`picture-${pic.id}`}
-            style={{ backgroundImage: `url(${pic.image.src})` }}
+            // style={{ backgroundImage: `url(${pic.image.src})` }}
             transition={{
-              duration: 0.4,
+              duration: 0.3,
               ease: "easeInOut",
             }}
             onClick={onClick}
-            className={`${pic.width} bg-cover bg-red-800 shadow-md object-cover absolute top-50 left-50  w-[80%] h-[80%] cursor-pointer rounded-[10px]`}
+            className={`${pic.width} bg-cover box-${pic.id} shadow-md object-contain absolute top-50 left-50  w-full h-full cursor-pointer rounded-[10px]`}
           />
         )}
       </AnimatePresence>
