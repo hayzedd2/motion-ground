@@ -19,7 +19,7 @@ export default function RootLayout({
     <html lang="en">
       <body className={newsReader.className}>{children}</body>
       <Analytics/>
-      <Toaster className="bg-red-700"/>
+      <Toaster/>
     </html>
   );
 }

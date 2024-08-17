@@ -11,7 +11,7 @@ const Experiment = () => {
     console.log(selectedTab);
   }, []);
   return (
-    <section className="py-20 xl:px-4 sm:px-0">
+    <section className="py-10 xl:px-4 sm:px-0">
       <div className="">
         <AboutText />
         <ul className=" flex relative gap-2 px-2 xl:min-w-[37.5rem] xl:max-w-[400px] min-h-[400px] max-h-[400px] overflow-hidden items-center justify-center border-2 border-[hsla(0,0%,100%,.03)]">
@@ -109,7 +109,6 @@ export const Modal = ({ items, onClick }: ModalProps) => {
 export const Card = ({ items, onClick }: CardProps) => {
   return (
     <motion.li
-  
       key={items.title}
       layoutId={`itemContainer${items.id}`}
       onClick={onClick}
