@@ -123,7 +123,7 @@ export const AboutText = () => {
       <h1 className="text-[1.2rem]">Album</h1>
       <p className="text-[0.85rem]">
         Inspired by{" "}
-        <a href="#" className="underline underline-offset-1">
+        <a target="_blank" href="https://x.com/wickedmishra/status/1824113832404668534?s=46" className="underline underline-offset-1">
           Preet
         </a>
         .
