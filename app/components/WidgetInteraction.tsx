@@ -234,7 +234,7 @@ const WidgetInteraction = () => {
         />
         Show overflow
       </p> */}
-      <div className="flex gap-2 mt-3">
+      <div className="flex gap-2 mt-3 lex  px-3 xl:min-w-[37.5rem] xl:max-w-[400px] min-h-[400px] max-h-[400px] overflow-hidden items-center justify-center border-2 border-[hsla(0,0%,100%,.03)]">
         <motion.div
           drag="y"
           dragConstraints={{

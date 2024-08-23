@@ -154,3 +154,10 @@
   gap: 10px;
   grid-template-columns: repeat(1fr);
 }
+
+.bg-banner{
+  background-image: url("./image/hozier.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}

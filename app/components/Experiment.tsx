@@ -64,7 +64,7 @@ export const Modal = ({ items, onClick }: ModalProps) => {
               duration: 0.3,
               ease: "easeInOut",
             }}
-            className="absolute top-50 left-50 flex items-center justify-center"
+            className="absolute  flex items-center justify-center"
           >
             <motion.div layoutId={`itemIcon${items.id}`}></motion.div>
             <motion.div

@@ -66,7 +66,7 @@ export const BigImage = ({ pic, onClick }: BigImageProp) => {
               ease: "easeInOut",
             }}
             onClick={onClick}
-            className={`${pic.width} bg-cover box-${pic.id} shadow-md object-contain absolute top-50 left-50  w-full h-full cursor-pointer rounded-[10px]`}
+            className={`${pic.width} bg-cover box-${pic.id} shadow-md object-contain absolute  w-full h-full cursor-pointer rounded-[10px]`}
           />
         )}
       </AnimatePresence>
