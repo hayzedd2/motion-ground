@@ -45,78 +45,87 @@ export const Expandable = () => {
             <motion.div
               key="default"
               layout
-              initial={{ width: "16rem", height: "3.4rem" }}
-              animate={{ width: "16rem", height: "3.4rem" }}
-              className="flex items-center gap-2"
+              initial={{ width: "18rem", height: "3.4rem" }}
+              animate={{ width: "18rem", height: "3.4rem" }}
+              className="flex flex-col"
               transition={{
                 duration: 0.4,
               }}
             >
-              <motion.div
-                layoutId="banner"
-                initial={{ width: "3.8rem", height: "2.5rem" }}
-                animate={{ width: "3.8rem", height: "2.5rem" }}
-                className="w-[3.8rem] h-10 box-2 bg-banner cursor-pointer"
-                onClick={() => setCurrState("step1")}
-                transition={{
-                  duration: 0.4,
-                }}
-              ></motion.div>
-              <motion.div
-                layoutId="music-content"
-                className="flex w-full gap-2 items-center justify-between"
-              >
+              <div className="flex items-center gap-2">
                 <motion.div
-                  className="flex flex-col text-white h-full justify-center"
-                  layoutId="music-title"
-                >
-                  <motion.h3
-                    layoutId="music-name"
-                    className="text-[0.85rem] font-[600]"
-                  >
-                    Too Sweet
-                  </motion.h3>
-                  <motion.p
-                    layoutId="music-artist"
-                    className="text-[0.75rem] text-gray-300 font-[500] mt-[-1px]"
-                  >
-                    Hozier
-                  </motion.p>
-                </motion.div>
-                <motion.div layoutId="musicstate"></motion.div>
-                <motion.div layoutId="musictime"></motion.div>
-                <motion.div
-                  className="flex gap-2 mr-2 cursor-pointer"
-                  layoutId="music-controllers"
+                  layoutId="banner"
+                  initial={{ width: "4.8rem", height: "2.5rem" }}
+                  animate={{ width: "4.8rem", height: "2.5rem" }}
+                  className="box-2 bg-banner cursor-pointer"
+                  onClick={() => setCurrState("step1")}
                   transition={{
-                    type: "spring",
-                    stiffness: 500,
-                    damping: 50,
                     duration: 0.4,
                   }}
+                ></motion.div>
+                <motion.div
+                  layoutId="music-content"
+                  className="flex w-full gap-2 items-center justify-between"
                 >
-                  {["IoPlayBack", "IoPlay", "IoPlayForward"].map(
-                    (icon, index) => (
-                      <motion.div
-                        key={icon}
-                        layoutId={`icon-${index}`}
-                        className="flex items-center justify-center"
-                        initial={{ scale: 1 }}
-                        animate={{ scale: 1 }}
-                        style={{ width: "24px", height: "24px" }}
-                      >
-                        {icon === "IoPlayBack" && <IoPlayBack />}
-                        {icon === "IoPlay" &&
-                          (!isPaused ? (
-                            <IoPlay onClick={() => setIsPaused(!isPaused)} />
-                          ) : (
-                            <IoPause onClick={() => setIsPaused(!isPaused)} />
-                          ))}
-                        {icon === "IoPlayForward" && <IoPlayForward />}
-                      </motion.div>
-                    )
-                  )}
+                  <motion.div
+                    className="flex flex-col text-white h-full justify-center"
+                    layoutId="music-title"
+                  >
+                    <motion.h3
+                      layoutId="music-name"
+                      className="text-[0.85rem] font-[600]"
+                    >
+                      Too Sweet
+                    </motion.h3>
+                    <motion.p
+                      layoutId="music-artist"
+                      className="text-[0.75rem] text-gray-300 font-[500] mt-[-1px]"
+                    >
+                      Hozier
+                    </motion.p>
+                  </motion.div>
+
+                  <motion.div layoutId="musictime"></motion.div>
+                  <motion.div
+                    className="flex gap-2 mr-2 cursor-pointer"
+                    layoutId="music-controllers"
+                    transition={{
+                      duration: 0.4,
+                    }}
+                  >
+                    {["IoPlayBack", "IoPlay", "IoPlayForward"].map(
+                      (icon, index) => (
+                        <motion.div
+                          key={icon}
+                          layoutId={`icon-${index}`}
+                          className="flex items-center justify-center"
+                          initial={{ scale: 1 }}
+                          animate={{ scale: 1 }}
+                          style={{ width: "24px", height: "24px" }}
+                        >
+                          {icon === "IoPlayBack" && <IoPlayBack />}
+                          {icon === "IoPlay" &&
+                            (!isPaused ? (
+                              <IoPlay onClick={() => setIsPaused(!isPaused)} />
+                            ) : (
+                              <IoPause onClick={() => setIsPaused(!isPaused)} />
+                            ))}
+                          {icon === "IoPlayForward" && <IoPlayForward />}
+                        </motion.div>
+                      )
+                    )}
+                  </motion.div>
                 </motion.div>
+              </div>
+              <motion.div
+                layoutId="musicstate"
+                className="w-full rounded-[6px] overflow-hidden flex items-center bg-gray-600 h-[3px] mt-2"
+              >
+                <motion.div
+                  layoutId="musicplay"
+                  className=" bg-white h-[3px] rounded-[6px] my-3"
+                  style={{ width: `${calculateProgress()}%` }}
+                ></motion.div>
               </motion.div>
             </motion.div>
           )}
@@ -127,14 +136,14 @@ export const Expandable = () => {
               layout
               initial={{ width: "16rem", height: "3.4rem" }}
               animate={{ width: "18rem", height: "auto" }}
-              className="flex flex-col items-center justify-center"
+              className="flex flex-col bg-red-800v items-center justify-center"
               transition={{
                 duration: 0.4,
               }}
             >
               <motion.div
                 layoutId="banner"
-                className="w-[12rem] h-[10rem] box-2 cursor-pointer bg-cover bg-center bg-banner"
+                className="w-full h-[15rem]  box-2 cursor-pointer bg-cover bg-center bg-banner"
                 onClick={() => setCurrState("default")}
                 transition={{
                   duration: 0.4,
@@ -142,7 +151,7 @@ export const Expandable = () => {
               ></motion.div>
               <motion.div
                 layoutId="music-content"
-                className="flex flex-col w-[12rem] mt-2 gap-1 items-start"
+                className="flex flex-col w-full mt-2 gap-1 items-start"
               >
                 <motion.div
                   className="flex flex-col text-white h-full justify-center"
@@ -184,10 +193,7 @@ export const Expandable = () => {
                   className="flex mx-auto min-w-[9rem] cursor-pointer mt-2 justify-between items-center"
                   layoutId="music-controllers"
                   transition={{
-                    type: "spring",
-                    stiffness: 500,
-                    damping: 50,
-                    duration: 0.5,
+                    duration: 0.4,
                   }}
                 >
                   {["IoPlayBack", "IoPlay", "IoPlayForward"].map(
