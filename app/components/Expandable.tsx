@@ -98,19 +98,29 @@ export const Expandable = () => {
                         <motion.div
                           key={icon}
                           layoutId={`icon-${index}`}
-                          className="flex items-center justify-center"
+                          className="flex items-center text-white  justify-center"
                           initial={{ scale: 1 }}
                           animate={{ scale: 1 }}
-                          style={{ width: "24px", height: "24px" }}
+                          style={{ width: "28px", height: "28px" }}
                         >
-                          {icon === "IoPlayBack" && <IoPlayBack />}
+                          {icon === "IoPlayBack" && (
+                            <IoPlayBack className=" text-[1.25rem]" />
+                          )}
                           {icon === "IoPlay" &&
                             (!isPaused ? (
-                              <IoPlay onClick={() => setIsPaused(!isPaused)} />
+                              <IoPlay
+                                className=" text-[1.25rem]"
+                                onClick={() => setIsPaused(!isPaused)}
+                              />
                             ) : (
-                              <IoPause onClick={() => setIsPaused(!isPaused)} />
+                              <IoPause
+                                className=" text-[1.25rem]"
+                                onClick={() => setIsPaused(!isPaused)}
+                              />
                             ))}
-                          {icon === "IoPlayForward" && <IoPlayForward />}
+                          {icon === "IoPlayForward" && (
+                            <IoPlayForward className=" text-[1.25rem]" />
+                          )}
                         </motion.div>
                       )
                     )}
@@ -201,7 +211,7 @@ export const Expandable = () => {
                       <motion.div
                         key={icon}
                         layoutId={`icon-${index}`}
-                        className="flex items-center justify-center"
+                        className="flex items-center text-white justify-center"
                         initial={{ scale: 1 }}
                         animate={{ scale: 1.55 }}
                         style={{ width: "24px", height: "24px" }}

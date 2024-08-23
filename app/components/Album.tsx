@@ -8,17 +8,21 @@ import { AnimatePresence } from "framer-motion";
 
 const Album = () => {
   const [selectedImg, setSelectedImg] = useState<AlbumProp | null>(null);
+  const handleImageSelect = (pic: AlbumProp) => {
+    setSelectedImg(pic);
+  };
   return (
     <section className="py-10 xl:px-4 sm:px-0">
       <AboutText />
       <div className="flex relative gap-2 px-3 xl:min-w-[37.5rem] xl:max-w-[400px] min-h-[400px] max-h-[400px] overflow-hidden items-center justify-center border-2 border-[hsla(0,0%,100%,.03)] image-grid">
         <div className="w-full relative grid-cols-3 sm:gap-2 xl:gap-3 max-w-[400px] grid">
           {AlbumArr.map((pic) => {
+
             return (
               <SingleImg
                 key={pic.id}
                 pic={pic}
-                onClick={() => setSelectedImg(pic)}
+                onClick={() => handleImageSelect(pic)}
               />
             );
           })}
@@ -27,7 +31,7 @@ const Album = () => {
         {selectedImg ? (
           <SideImages
             selectedImage={selectedImg}
-            setSelectedImage={setSelectedImg}
+            setSelectedImage={handleImageSelect}
           />
         ) : null}
       </div>
@@ -66,7 +70,7 @@ export const BigImage = ({ pic, onClick }: BigImageProp) => {
               ease: "easeInOut",
             }}
             onClick={onClick}
-            className={`${pic.width} bg-cover box-${pic.id} shadow-md object-contain absolute  w-full h-full cursor-pointer rounded-[10px]`}
+            className={`box-${pic.id} shadow-md object-contain absolute  w-full h-full cursor-pointer rounded-[10px]`}
           />
         )}
       </AnimatePresence>
@@ -75,7 +79,7 @@ export const BigImage = ({ pic, onClick }: BigImageProp) => {
 };
 interface SideImageProp {
   selectedImage: AlbumProp | null;
-  setSelectedImage: Dispatch<SetStateAction<AlbumProp | null>>;
+  setSelectedImage: (pic : AlbumProp)=> void;
 }
 export const SideImages = ({
   selectedImage,
@@ -84,30 +88,19 @@ export const SideImages = ({
   if (!selectedImage) {
     return null;
   }
-  const sideImageArr = AlbumArr.filter(
-    (_, index) => index !== selectedImage.id - 1
-  );
-  const percentArr = [
-    "xl:left-[33%] sm:left-[80px]",
-    "xl:left-[45%] sm:left-[150px]",
-    "xl:left-[57%] sm:left-[220px]",
-  ];
-  // 80,150,220
-  const modifiedSideImageArr = sideImageArr.map((item, index) => ({
-    ...item,
-    percent: percentArr[index],
-  }));
+
   return (
     <>
       <AnimatePresence>
         <motion.div className="flex flex-col gap-3 sm:ml-0 xl:ml-3">
-          {modifiedSideImageArr.map((pic, index) => {
+          {AlbumArr.map((pic) => {
+            if (pic.id === selectedImage.id) return null; // Skip the currently selected image
             return (
               <motion.div
-                // onClick={()=> setSelectedImage(pic)}
-                key={pic.id}
                 layoutId={`picture-${pic.id}`}
-                className={`bottom-[5px] ${pic.percent} w-[4rem] bg-center box-${pic.id} h-[3.5rem]  cursor-pointer rounded-[10px]`}
+                // onClick={() => setSelectedImage(pic)}
+                key={pic.id}
+                className={`w-[4rem] bg-center box-${pic.id} h-[3.5rem] cursor-pointer rounded-[10px]`}
               ></motion.div>
             );
           })}
@@ -116,14 +109,17 @@ export const SideImages = ({
     </>
   );
 };
-
 export const AboutText = () => {
   return (
     <div className="w-full pb-5 px-4">
       <h1 className="text-[1.2rem]">Album</h1>
       <p className="text-[0.85rem]">
         Inspired by{" "}
-        <a target="_blank" href="https://x.com/wickedmishra/status/1824113832404668534?s=46" className="underline underline-offset-1">
+        <a
+          target="_blank"
+          href="https://x.com/wickedmishra/status/1824113832404668534?s=46"
+          className="underline underline-offset-1"
+        >
           Preet
         </a>
         .
