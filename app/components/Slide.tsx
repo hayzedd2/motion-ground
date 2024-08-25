@@ -18,11 +18,14 @@ const Slide = () => {
   const progress = ["Slide to unlock", "Unlocked!"];
 
   const handleDragEnd = (event: any, info: any) => {
-    const dragThreshold = containerWidth - 75; // 90% of container width
-    if (info.point.x > 800) {
-      controls.start({ x: containerWidth - 75 }); 
+    if (info.offset.x > 110) {
+      console.log(containerWidth);
+      console.log(info.offset.x);
+      controls.start({ x: containerWidth - 75 });
       setIsUnlocked(true);
     } else {
+      console.log(containerWidth);
+      console.log(info.offset.x);
       controls.start({ x: 0 });
       setIsUnlocked(false);
     }
@@ -30,7 +33,7 @@ const Slide = () => {
 
   return (
     <section className='className="py-10 xl:px-4 sm:px-0'>
-        <AboutText/>
+      <AboutText />
       <div className="flex relative gap-2 px-3 xl:min-w-[37.5rem] xl:max-w-[400px] min-h-[400px] max-h-[400px] overflow-hidden items-center justify-center border-2 border-[hsla(0,0%,100%,.03)] ">
         <div
           ref={containerRef}
@@ -81,13 +84,11 @@ const Slide = () => {
 
 export default Slide;
 
-
 export const AboutText = () => {
-    return (
-      <div className="w-full pb-5 px-4">
-        <h1 className="text-[1.2rem]">Slide</h1>
-        <p className="text-[0.85rem]">Slide to unlock.</p>
-      </div>
-    );
-  };
-  
+  return (
+    <div className="w-full pb-5 px-4">
+      <h1 className="text-[1.2rem]">Slide</h1>
+      <p className="text-[0.85rem]">Slide to unlock.</p>
+    </div>
+  );
+};
