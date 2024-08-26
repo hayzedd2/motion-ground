@@ -32,7 +32,7 @@ const Slide = () => {
 
   return (
     <section className="py-10 xl:px-4 sm:px-0">
-      {/* <AboutText /> */}
+      <AboutText />
       <div className="flex relative gap-2 px-3 xl:min-w-[37.5rem] xl:max-w-[400px] min-h-[200px] max-h-[200px] overflow-hidden items-center justify-center border-2 border-[hsla(0,0%,100%,.03)] ">
         <motion.div
           ref={containerRef}
