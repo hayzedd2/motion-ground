@@ -1,7 +1,7 @@
 "use client";
 
 import React, { Dispatch, SetStateAction, useState } from "react";
-import { AlbumArr } from "./AlbumContent";
+import { AlbumArr } from "./contents/AlbumContent";
 import { motion } from "framer-motion";
 import { AlbumProp } from "./type";
 import { AnimatePresence } from "framer-motion";

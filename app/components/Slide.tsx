@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
-import { BsUnlock } from "react-icons/bs";
+import { BsLock, BsUnlock } from "react-icons/bs";
 
 import { motion, useAnimation, useMotionValue } from "framer-motion";
 
@@ -32,11 +32,11 @@ const Slide = () => {
 
   return (
     <section className="py-10 xl:px-4 sm:px-0">
-      <AboutText />
-      <div className="flex relative gap-2 px-3 xl:min-w-[37.5rem] xl:max-w-[400px] min-h-[400px] max-h-[400px] overflow-hidden items-center justify-center border-2 border-[hsla(0,0%,100%,.03)] ">
+      {/* <AboutText /> */}
+      <div className="flex relative gap-2 px-3 xl:min-w-[37.5rem] xl:max-w-[400px] min-h-[200px] max-h-[200px] overflow-hidden items-center justify-center border-2 border-[hsla(0,0%,100%,.03)] ">
         <motion.div
           ref={containerRef}
-          className="w-[18rem] rounded-[2rem] bg-[#1a1a1a] p-1 flex items-center  gap-3 bx-shadow h-[3.4rem]"
+          className="w-[18rem] rounded-[2rem] bg-[#1a1a1a] p-1 flex items-center  gap-3 bx-shadow h-[3.6rem]"
         >
           <motion.button
             drag="x"
@@ -54,7 +54,7 @@ const Slide = () => {
             }}
             className="w-[4.2rem] h-full relative z-50 rounded-[1.5rem] cursor-grab bg-[#111110] bx-shadow flex items-center justify-center"
           >
-            <BsUnlock className="text-[1.2rem]" />
+            {isUnlocked ? <BsUnlock className="text-[1.2rem]" /> : <BsLock className="text-[1.2rem]"/>}
           </motion.button>
           <motion.p className="text-[0.95rem] h-[1rem] overflow-hidden flex flex-col">
             {progress.map((pro) => {

@@ -9,12 +9,11 @@ export type ItemProp = {
 
 export type AlbumProp = {
   id: number;
-  image: StaticImageData;
   width: string;
 };
-export type ModifiedAlbumProp = {
+export type ToolBarProp = {
   id: number;
-  image: StaticImageData;
-  width: string;
-  percent: string | undefined;
+  name: string;
+  height:string
+  content : string
 };

@@ -3,7 +3,7 @@
 import React, { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { ItemProp } from "./type";
-import { content } from "./contents";
+import { content } from "./contents/contents";
 import { Button } from "@/components/ui/button";
 const Experiment = () => {
   const [selectedTab, setSelectedTab] = useState<ItemProp | null>(null);
