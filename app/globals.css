@@ -155,19 +155,19 @@
   grid-template-columns: repeat(1fr);
 }
 
-.bg-banner{
+.bg-banner {
   background-image: url("./image/hozier.jpg");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
-  
 }
 .bx-shadow {
-  box-shadow: 
-    inset 0px 1px 0px 0px hsla(0, 0%, 100%, 0.03), 
+  box-shadow: inset 0px 1px 0px 0px hsla(0, 0%, 100%, 0.03),
     inset 0px 0px 0px 1px hsla(0, 0%, 100%, 0.03),
-    0px 0px 0px 1px rgba(0, 0, 0, 0.1),
-    0px 2px 2px 0px rgba(0, 0, 0, 0.1),
-    0px 4px 4px 0px rgba(0, 0, 0, 0.1),
-    0px 8px 8px 0px rgba(0, 0, 0, 0.1);
+    0px 0px 0px 1px rgba(0, 0, 0, 0.1), 0px 2px 2px 0px rgba(0, 0, 0, 0.1),
+    0px 4px 4px 0px rgba(0, 0, 0, 0.1), 0px 8px 8px 0px rgba(0, 0, 0, 0.1);
+}
+
+.clipped{
+  clip-path: inset(0px 50% 0px 0px);
 }

@@ -15,5 +15,5 @@ export type ToolBarProp = {
   id: number;
   name: string;
   height:string
-  content : string
+  content : React.ReactNode | string
 };

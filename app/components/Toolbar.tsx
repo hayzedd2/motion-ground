@@ -9,28 +9,33 @@ const Toolbar = () => {
   const [tool, setSelectedTool] = useState<ToolBarProp | null>(null);
   return (
     <section className="py-10 xl:px-4 sm:px-0">
-      <div className="flex  pb-10 gap-2 px-3 xl:min-w-[37.5rem] xl:max-w-[400px] min-h-[400px] max-h-[400px] overflow-hidden items-end justify-center border-2 border-[hsla(0,0%,100%,.03)]" onClick={()=>setSelectedTool(null)}>
-        <motion.div className="py-3 relative z-50 px-7 w-[20rem] bg-[#1a1a1a] bx-shadow rounded-[14px]">
+      <div
+        className="flex  pb-10 gap-2 px-3 xl:min-w-[37.5rem] xl:max-w-[400px] min-h-[450px] max-h-[450px] overflow-hidden items-end justify-center border-2 border-[hsla(0,0%,100%,.03)]"
+        // onClick={() => setSelectedTool(null)}
+      >
+        <motion.div className="overflow-hidden py-3 w-[23rem] justify-center bg-[#1A1A1A] flex items-center flex-col  bx-shadow rounded-2xl">
           <motion.div
-            className="w-full"
+            className="w-full flex justify-center items-center"
             animate={{
               height: !tool ? "0" : tool.height,
             }}
           >
-            <p>{tool ? tool.content : null}</p>
+            <div className="rounded-2xl bg-[#1A1A1A]">
+              {tool ? tool.content : null}
+            </div>
           </motion.div>
-          <ul className="flex gap-2 w-full justify-between">
-            {ToolbarArr.map((tool) => {
+          <ul className="relative z-50 flex gap-2 px-7 w-full justify-between">
+            {ToolbarArr.map((too) => {
               return (
                 <li
-                  key={tool.id}
-                  className="cursor-pointer"
+                  key={too.id}
+                  className={`cursor-pointer`}
                   onClick={(e) => {
-                    e.stopPropagation()
-                    setSelectedTool(tool);
+                    e.stopPropagation();
+                    setSelectedTool(too);
                   }}
                 >
-                  {tool.name}
+                  {too.name}
                 </li>
               );
             })}
