@@ -35,6 +35,7 @@ const Toolbar = () => {
   }, [tool]);
   return (
     <section className="py-10 xl:px-4 sm:px-0">
+      <AboutText/>
       <div
         className="flex  pb-5 gap-2 px-3 xl:min-w-[37.5rem] xl:max-w-[400px] min-h-[450px] max-h-[450px] overflow-hidden items-end justify-center border-2 border-[hsla(0,0%,100%,.03)]"
         // onClick={() => setSelectedTool(null)}
@@ -94,3 +95,23 @@ const Toolbar = () => {
 };
 
 export default Toolbar;
+
+
+export const AboutText = () => {
+  return (
+    <div className="w-full pb-5 px-4">
+      <h1 className="text-[1.2rem]">Toolbar</h1>
+      <p className="text-[0.85rem]">
+        Inspiration from 
+        <a
+          target="_blank"
+          href="https://uilabs.dev"
+          className="underline ml-1 underline-offset-1"
+        >
+           Uilabs
+        </a>
+        .
+      </p>
+    </div>
+  );
+};
