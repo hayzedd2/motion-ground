@@ -6,9 +6,9 @@ import { IoGitBranchOutline, IoGitCommitOutline } from "react-icons/io5";
 
 const ProjectCard = () => {
   return (
-    <Card className="w-80 overflow-hidden h-auto bg-[#1A1A1A] shadow-none bx-shadow border-none rounded-2xl text-inherit">
+    <Card className="w-full overflow-hidden h-auto bg-[#1F1F1F] shadow-none bx-shadow border-none rounded-2xl text-inherit">
       <CardContent className="p-4">
-        <div className="project-image box-1 w-full rounded-xl h-[6rem]"></div>
+        <div className="project-image box-1 w-full rounded-xl h-[7rem]"></div>
         <div className="flex flex-col mt-3 text-sm gap-3">
           <div>
             <h5>Domain</h5>
@@ -32,12 +32,12 @@ const ProjectCard = () => {
             </div>
             <div>
               <h5>Created</h5>
-              <p className="flex gap-2 items-center">
+              <h6 className="flex gap-2 items-center">
                 <span className="mt-[3px] text-white">
                   1 day ago by hayzedd
                 </span>
                 <span className="w-5 box-2 h-5 rounded-full"></span>
-              </p>
+              </h6>
             </div>
           </div>
           <div>
@@ -48,7 +48,7 @@ const ProjectCard = () => {
               </span>
               <span className="text-white">main</span>
             </p>
-            <p className="flex gap-2 items-center">
+            <h6 className="flex gap-2 items-center">
               <span>
                 <IoGitCommitOutline />
               </span>
@@ -57,7 +57,7 @@ const ProjectCard = () => {
                 <span>bcfc788</span>
                 <span>final iteration</span>
               </p>
-            </p>
+            </h6>
           </div>
         </div>
       </CardContent>

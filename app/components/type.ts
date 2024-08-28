@@ -14,6 +14,5 @@ export type AlbumProp = {
 export type ToolBarProp = {
   id: number;
   name: string;
-  height:string
   content : React.ReactNode | string
 };

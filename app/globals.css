@@ -119,8 +119,7 @@
     rgba(58, 244, 10, 1) 100%
   );
 }
-
-.box-4 {
+.box-4{
   background: rgb(2, 0, 36);
   background: linear-gradient(
     184deg,
@@ -130,6 +129,12 @@
     rgba(227, 239, 17, 0.9613095238095238) 100%
   );
 }
+
+.scroll-container::-webkit-scrollbar{
+  display: none;
+}
+.scroll-container::ind
+
 
 .widget-2 {
   background: rgb(2, 0, 36);

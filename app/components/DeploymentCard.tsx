@@ -37,7 +37,7 @@ export default function DeploymentCard() {
   };
 
   return (
-    <Card className="w-80 overflow-hidden h-auto bg-[#1A1A1A] shadow-none bx-shadow border-none rounded-2xl text-inherit">
+    <Card className="w-full overflow-hidden h-auto bg-[#1F1F1F] shadow-none bx-shadow border-none rounded-2xl text-inherit">
       <CardContent className="p-4">
         <div className="flex items-center justify-between mb-3">
           <div className="flex items-center gap-1 text-sm font-medium">
@@ -67,12 +67,12 @@ export default function DeploymentCard() {
           </div>
 
           {copied ? (
-            <CheckIcon
-              onClick={copyToClipboard}
-              className="w-4 h-4 bg-red-800 cursor-pointer"
-            />
+            <CheckIcon className="w-4 h-4 cursor-pointer" />
           ) : (
-            <CopyIcon className="w-4 h-4" />
+            <CopyIcon
+              onClick={copyToClipboard}
+              className="w-4 h-4 cursor-pointer"
+            />
           )}
         </div>
         <div className="space-y-1">
