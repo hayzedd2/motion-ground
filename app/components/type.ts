@@ -16,3 +16,10 @@ export type ToolBarProp = {
   name: string;
   content : React.ReactNode | string
 };
+
+
+export type FilterProp= {
+  name : string
+  svg : React.ReactNode
+  color : string
+}
