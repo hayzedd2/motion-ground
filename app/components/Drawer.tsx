@@ -4,6 +4,8 @@ import React, { Dispatch, ReactElement, SetStateAction, useState } from "react";
 import { DrawerArr } from "./contents/DrawerContents";
 import DrawerItem from "./DrawerItem";
 import { DrawerProp } from "./type";
+import { IoChevronBack } from "react-icons/io5";
+import { FlaskConical } from "lucide-react";
 
 const Drawer = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
@@ -90,9 +92,6 @@ const Drawer = () => {
           </div>
           <div
             className="relative  h-full flex flex-col gap-3 z-[-50]"
-            style={{
-              pointerEvents: selectedDrawer ? "none" : "all",
-            }}
           >
             {DrawerArr.map((drawerItem, index) => {
               return (
@@ -129,7 +128,7 @@ export const OverlayDrawer = ({
 }: OverlayDrawerProp) => {
   return (
     <motion.div
-      className="absolute bottom-0 z-50 bg-white bx-shadow-light p-8 w-full left-0 right-0 h-[13rem]"
+      className="absolute bottom-0 z-50 bg-white bx-shadow-light px-6 py-4 w-full left-0 right-0 h-[16rem]"
       style={{
         borderRadius: "30px",
       }}
@@ -142,10 +141,29 @@ export const OverlayDrawer = ({
         ease: "easeInOut",
       }}
     >
-      <p className="cursor-pointer" onClick={() => setSelectedDrawer(null)}>
-        Back
-      </p>
-      <div>{selectedDrawer?.content}</div>
+      <button
+        className="w-8 h-8 mb-4 bg-[#F7F8F9] rounded-full flex items-center justify-center cursor-pointer"
+        onClick={() => setSelectedDrawer(null)}
+      >
+        <IoChevronBack className="text-[#8f8f8f]" />
+      </button>
+      <div className="flex flex-col w-full">
+        <div className="text-[2rem] text-[#8f8f8f] mb-2">
+          {selectedDrawer?.icon}
+        </div>
+        <div className="text-[#111110] flex flex-col">
+          <p className="text-[1.2rem]">{selectedDrawer?.name}</p>
+          <p>{selectedDrawer?.content}</p>
+        </div>
+
+        <div className="w-full flex justify-end mt-2">
+          <button onClick={()=> setSelectedDrawer(null)} className="flex justify-center w-[9rem] gap-2  items-center cursor-pointer bg-[rgb(247,248,249)] rounded-[14px] px-4 py-3">
+            <FlaskConical className="w-5 h-5 text-[#8f8f8f] " />
+            <p className="text-[#111110] mt-[3px]">Test Model</p>
+            
+          </button>
+        </div>
+      </div>
     </motion.div>
   );
 };
