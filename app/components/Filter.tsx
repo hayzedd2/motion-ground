@@ -1,15 +1,15 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { FilterArr } from "./contents/FilterContent";
 import FilterBadge from "./FilterBadge";
 import { FilterProp } from "./type";
 import { TbFilterBolt, TbFilterEdit } from "react-icons/tb";
 import { AnimatePresence, motion } from "framer-motion";
 
-
 const Filter = () => {
   const [selectedFilters, setSelectedFilters] = useState<FilterProp[]>([]);
   const [finishedFiltering, setFinishedFiltering] = useState(false);
+
   return (
     <section className="py-10 xl:px-4 sm:px-0">
       <AboutText />
@@ -33,26 +33,22 @@ const Filter = () => {
             {finishedFiltering ? "Edit Filters" : "Filter"}
           </p>
         </motion.div>
-        <AnimatePresence mode="wait">
+        
           {finishedFiltering ? (
             <motion.div
               transition={{
                 ease: "easeInOut",
-                staggerChildren: 0.05, // Stagger children for smoother animation
               }}
               layoutId="filtercontainer"
               className="flex flex-wrap items-center justify-center w-auto gap-2 px-[0.5rem] py-1 h-auto rounded-lg"
             >
-              {selectedFilters.map((fil) => (
+              {selectedFilters.map((fil,index) => (
                 <motion.div
                   key={fil.name}
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.95 }}
                   transition={{
                     ease: "easeInOut",
                     duration: 0.3,
-                    type: "spring",
+
                   }}
                   layoutId={fil.name}
                 >
@@ -70,25 +66,19 @@ const Filter = () => {
               className="flex flex-wrap items-center justify-center gap-4"
               transition={{
                 ease: "easeInOut",
-                staggerChildren: 0.05, // Stagger children for smoother animation
+                
               }}
             >
               {FilterArr.map((fil, index) => (
                 <motion.div
                   key={index}
-                  initial={{ opacity: 0, scale: 0.95 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  exit={{ opacity: 0, scale: 0.95 }}
                   transition={{
                     ease: "easeInOut",
                     duration: 0.3,
-                    type: "spring",
                   }}
                   layoutId={fil.name}
                   className={`${
-                    !selectedFilters.includes(fil)
-                      ? "filter brightness-75" 
-                      : ""
+                    !selectedFilters.includes(fil) ? "filter brightness-75" : ""
                   }`}
                   onClick={() =>
                     selectedFilters.includes(fil)
@@ -107,7 +97,7 @@ const Filter = () => {
               ))}
             </motion.div>
           )}
-        </AnimatePresence>
+     
       </div>
     </section>
   );

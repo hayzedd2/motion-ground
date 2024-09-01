@@ -14,12 +14,18 @@ export type AlbumProp = {
 export type ToolBarProp = {
   id: number;
   name: string;
-  content : React.ReactNode | string
+  content: React.ReactNode | string;
 };
 
+export type FilterProp = {
+  name: string;
+  svg: React.ReactNode;
+  color: string;
+};
 
-export type FilterProp= {
-  name : string
-  svg : React.ReactNode
-  color : string
-}
+export type DrawerProp = {
+  name: string;
+  color: string;
+  content: string;
+  icon: React.ReactNode;
+};
