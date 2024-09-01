@@ -47,14 +47,9 @@ const Drawer = () => {
           className="w-[20rem]  h-[17.5rem] overflow-hidden px-6 bg-white bx-shadow-light absolute  bottom-0 "
           style={{
             borderRadius: "30px",
-            WebkitBackdropFilter: selectedDrawer ? "blur(7px)" : "", // Apply blur for Safari
-            backdropFilter: selectedDrawer ? "blur(7px)" : "",
           }}
         >
-          {/* <div
-            className="
-            w-6 h-[0.15rem] rounded-2xl bg-gray-500"
-          ></div> */}
+
           <div
             style={{
               borderBottom: "1px solid #f7f7f7",
