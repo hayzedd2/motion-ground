@@ -1,11 +1,11 @@
 import { BsKeyFill } from "react-icons/bs";
 import { RiWebhookFill } from "react-icons/ri";
 import { motion } from "framer-motion";
-import { CardsCookieSettings } from "../Cookie-settings";
+import { CardsCookieSettings } from "../semi-components/Cookie-settings";
 import { MdGroups3, MdOutlineSettings } from "react-icons/md";
 import { LuUnplug } from "react-icons/lu";
-import { CardsShare } from "../Share";
-import { TeamMembers } from "../TeamMembers";
+import { CardsShare } from "../semi-components/Share";
+import { TeamMembers } from "../semi-components/TeamMembers";
 
 
 export const content = [

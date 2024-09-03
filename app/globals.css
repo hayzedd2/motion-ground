@@ -89,6 +89,7 @@
 .widget {
   @apply sm:w-[22rem] xl:w-[26rem] min-h-[11.5rem] max-h-[11.5rem] p-5 rounded-[16px];
 }
+
 .box-1 {
   background: rgb(2, 0, 36);
   background: linear-gradient(
@@ -183,4 +184,8 @@
     inset 0px 1px 1px 0px #fff,
     inset 0px 0px 0px 1px hsla(0, 0%, 100%, 0.1),
     0px 0px 1px 0px rgba(0, 0, 0, 0.5);
+}
+
+.animation-container{
+  @apply flex relative gap-2 px-3 bg-[#0B0B09] bx-shadow rounded-xl xl:min-w-[37.5rem] xl:max-w-[400px] overflow-hidden items-center justify-center border-2 border-[hsla(0,0%,100%,.03)]
 }

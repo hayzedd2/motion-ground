@@ -14,7 +14,7 @@ const Album = () => {
   return (
     <section className="py-10 xl:px-4 sm:px-0">
       <AboutText />
-      <div className="flex relative gap-2 px-3 xl:min-w-[37.5rem] xl:max-w-[400px] min-h-[400px] max-h-[400px] overflow-hidden items-center justify-center border-2 border-[hsla(0,0%,100%,.03)] image-grid">
+      <div className="min-h-[400px] max-h-[400px]  animation-container image-grid">
         <div className="w-full relative grid-cols-3 sm:gap-2 xl:gap-3 max-w-[400px] grid">
           {AlbumArr.map((pic) => {
 

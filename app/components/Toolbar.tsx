@@ -35,9 +35,12 @@ const Toolbar = () => {
   }, [tool]);
   return (
     <section className="py-10 xl:px-4 sm:px-0">
-      <AboutText/>
+      <AboutText />
       <div
-        className="flex  pb-5 gap-2 px-3 xl:min-w-[37.5rem] xl:max-w-[400px] min-h-[450px] max-h-[450px] overflow-hidden items-end justify-center border-2 border-[hsla(0,0%,100%,.03)]"
+        className="min-h-[450px] max-h-[450px] pb-4 animation-container"
+        style={{
+          alignItems: "end",
+        }}
         // onClick={() => setSelectedTool(null)}
       >
         <motion.div className="overflow-hidden py-3 w-[25rem] justify-center bg-[#1A1A1A] flex items-center flex-col  bx-shadow rounded-2xl">
@@ -54,7 +57,9 @@ const Toolbar = () => {
             <div ref={contentRef}>{tool ? tool.content : null}</div>
           </motion.div>
           <div
-            className={`flex gap-2 items-center sm:max-w-[20rem] xl:max-w-[23rem] mx-auto ${tool ? "mt-4" : ""}`}
+            className={`flex gap-2 items-center sm:max-w-[20rem] xl:max-w-[23rem] mx-auto ${
+              tool ? "mt-4" : ""
+            }`}
           >
             <ul
               className="flex relative overflow-scroll scroll-container"
@@ -96,19 +101,18 @@ const Toolbar = () => {
 
 export default Toolbar;
 
-
 export const AboutText = () => {
   return (
     <div className="w-full pb-5 px-4">
       <h1 className="text-[1.2rem]">Toolbar</h1>
       <p className="text-[0.85rem]">
-        Inspiration from 
+        Inspiration from
         <a
           target="_blank"
           href="https://uilabs.dev"
           className="underline ml-1 underline-offset-1"
         >
-           Uilabs
+          Uilabs
         </a>
         .
       </p>

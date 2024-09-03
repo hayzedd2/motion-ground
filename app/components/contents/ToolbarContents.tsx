@@ -1,7 +1,7 @@
-import CreateKey from "../CreateKey";
-import DeploymentCard from "../DeploymentCard";
-import ProjectCard from "../ProjectCard";
-import ShareWorkspace from "../ShareWorkspace";
+import CreateKey from "../semi-components/CreateKey";
+import DeploymentCard from "../semi-components/DeploymentCard";
+import ProjectCard from "../semi-components/ProjectCard";
+import ShareWorkspace from "../semi-components/ShareWorkspace";
 
 export const ToolbarArr = [
   {

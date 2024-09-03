@@ -1,7 +1,7 @@
 "use client"
 
 import React, { useState } from "react";
-import { FilterProp } from "./type";
+import { FilterProp } from "../type";
 
 const FilterBadge = ({ name, svg, color }: FilterProp) => {
    

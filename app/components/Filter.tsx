@@ -1,7 +1,7 @@
 "use client";
 import { useEffect, useMemo, useState } from "react";
 import { FilterArr } from "./contents/FilterContent";
-import FilterBadge from "./FilterBadge";
+import FilterBadge from "./semi-components/FilterBadge";
 import { FilterProp } from "./type";
 import { TbFilterBolt, TbFilterEdit } from "react-icons/tb";
 import { AnimatePresence, motion } from "framer-motion";
@@ -13,7 +13,7 @@ const Filter = () => {
   return (
     <section className="py-10 xl:px-4 sm:px-0">
       <AboutText />
-      <div className="flex flex-col relative gap-2 px-3 xl:min-w-[37.5rem] xl:max-w-[400px] min-h-[350px] max-h-[350px] overflow-hidden items-center justify-center border-2 border-[hsla(0,0%,100%,.03)] ">
+      <div className="min-h-[350px] max-h-[350px]  animation-container">
         <motion.div
           onClick={() => setFinishedFiltering(!finishedFiltering)}
           animate={{

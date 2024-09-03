@@ -29,3 +29,9 @@ export type DrawerProp = {
   content: string;
   icon: React.ReactNode;
 };
+
+
+export type GridProp={
+  color:string
+  empty:boolean
+}

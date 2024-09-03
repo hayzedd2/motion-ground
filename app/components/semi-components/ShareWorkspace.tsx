@@ -5,7 +5,7 @@ import { AnimatePresence, easeInOut, motion } from "framer-motion";
 import { CopyIcon, CheckIcon } from "lucide-react";
 
 const ShareWorkspace = () => {
-  const state = ["on", "off"];
+  const state = ["off", "on"];
   const [sharingState, setSharingState] = useState(false);
   const [copied, setCopied] = useState(false);
   const copyToClipboard = () => {

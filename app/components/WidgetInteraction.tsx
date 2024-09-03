@@ -120,7 +120,7 @@ const WidgetInteraction = () => {
     {
       key: "widget-2",
       content: (
-        <div className=" widget widget-2 flex justify-between flex-col">
+        <div className=" widget box-1 flex justify-between flex-col">
           <div className="flex w-full justify-end">
             <FaAppStoreIos className="text-black" />
           </div>
@@ -222,19 +222,9 @@ const WidgetInteraction = () => {
   const dragBuffer = 10;
 
   return (
-    <section className="flex-col py-10 max-w-[40rem] flex items-center justify-center mx-auto">
+    <section className="py-10 xl:px-4 sm:px-0">
       <AboutText />
-      {/* <p className="my-2">
-        <input
-          type="checkbox"
-          name=""
-          id=""
-          defaultChecked={showOverflow}
-          onClick={() => setShowOverflow(!showOverflow)}
-        />
-        Show overflow
-      </p> */}
-      <div className="flex gap-2 mt-3 lex  px-3 xl:min-w-[37.5rem] xl:max-w-[400px] min-h-[400px] max-h-[400px] overflow-hidden items-center justify-center border-2 border-[hsla(0,0%,100%,.03)]">
+      <div className="min-h-[400px] mt-3 max-h-[400px] animation-container">
         <motion.div
           drag="y"
           dragConstraints={{
@@ -248,7 +238,7 @@ const WidgetInteraction = () => {
           onDragEnd={onDragEnd}
           className={`${
             showOverflow ? "" : "overflow-hidden"
-          } widgetcontainer  rounded-[16px] sm:w-[22rem] xl:w-[26rem] h-[11.5rem] cursor-grab indicator  flex flex-col`}
+          } bx-shadow  rounded-[16px] sm:w-[22rem]  xl:w-[26rem] h-[11.5rem] cursor-grab indicator  flex flex-col`}
         >
           {widgets.map((widget, index) => (
             <motion.div

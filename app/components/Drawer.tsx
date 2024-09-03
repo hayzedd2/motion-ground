@@ -2,7 +2,7 @@
 import { motion, useMotionValue } from "framer-motion";
 import React, { Dispatch, ReactElement, SetStateAction, useState } from "react";
 import { DrawerArr } from "./contents/DrawerContents";
-import DrawerItem from "./DrawerItem";
+import DrawerItem from "./semi-components/DrawerItem";
 import { DrawerProp } from "./type";
 import { IoChevronBack } from "react-icons/io5";
 import { FlaskConical } from "lucide-react";
@@ -10,46 +10,34 @@ import { FlaskConical } from "lucide-react";
 const Drawer = () => {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
   const [selectedDrawer, setSelectedDrawer] = useState<DrawerProp | null>(null);
-  //   const [yPosition, setYPosition] = useState(0);
-  const yPosition = useMotionValue(0);
   const drawerVariants = {
     hidden: { y: "500px" },
     visible: {
       y: "0px",
     },
   };
-  const handleDrag = (event: any, info: any) => {
-    yPosition.set(info.point.y);
-    console.log(yPosition);
-  };
 
   return (
     <section className="py-10 xl:px-4 sm:px-0">
-      <div className="flex relative gap-2 px-3 xl:min-w-[37.5rem] xl:max-w-[400px] min-h-[400px] max-h-[400px] overflow-hidden items-center justify-center border-2 border-[hsla(0,0%,100%,.03)]">
+      <div className="min-h-[400px] max-h-[400px]  animation-container">
         <div
           onClick={() => {
             setIsDrawerOpen(!isDrawerOpen);
-            yPosition.set(0);
           }}
           className="absolute top-4 right-5  rounded-lg flex gap-1 py-2 px-[2rem]  bx-shadow cursor-pointer justify-center items-center"
         >
-          <p>Toggle</p>
+          <p>{isDrawerOpen ? "Close" : "Open"} Drawer</p>
         </div>
         <motion.div
           initial="hidden"
           animate={isDrawerOpen ? "visible" : "hidden"}
           variants={drawerVariants}
           transition={{ duration: 0.5, ease: "easeInOut" }}
-          drag="y"
-          draggable
-          dragConstraints={{ top: 0, bottom: 0 }} // Allow only vertical dragging
-          onDrag={handleDrag}
           className="w-[20rem]  h-[17.5rem] overflow-hidden px-6 bg-white bx-shadow-light absolute  bottom-0 "
           style={{
             borderRadius: "30px",
           }}
         >
-
           <div
             style={{
               borderBottom: "1px solid #f7f7f7",
@@ -85,9 +73,7 @@ const Drawer = () => {
               </svg>
             </button>
           </div>
-          <div
-            className="relative  h-full flex flex-col gap-3 z-[-50]"
-          >
+          <div className="relative  h-full flex flex-col gap-3 z-[-50]">
             {DrawerArr.map((drawerItem, index) => {
               return (
                 <div key={index} onClick={() => setSelectedDrawer(drawerItem)}>
@@ -152,10 +138,12 @@ export const OverlayDrawer = ({
         </div>
 
         <div className="w-full flex justify-end mt-2">
-          <button onClick={()=> setSelectedDrawer(null)} className="flex justify-center w-[9rem] gap-2  items-center cursor-pointer bg-[rgb(247,248,249)] rounded-[14px] px-4 py-3">
+          <button
+            onClick={() => setSelectedDrawer(null)}
+            className="flex justify-center w-[9rem] gap-2  items-center cursor-pointer bg-[rgb(247,248,249)] rounded-[14px] px-4 py-3"
+          >
             <FlaskConical className="w-5 h-5 text-[#8f8f8f] " />
             <p className="text-[#111110] mt-[3px]">Test Model</p>
-            
           </button>
         </div>
       </div>

@@ -1,5 +1,5 @@
 import React from "react";
-import { DrawerProp } from "./type";
+import { DrawerProp } from "../type";
 
 const DrawerItem = ({ name, color, content, icon }: DrawerProp) => {
   return (
