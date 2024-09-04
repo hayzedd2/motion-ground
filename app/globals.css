@@ -120,7 +120,7 @@
     rgba(58, 244, 10, 1) 100%
   );
 }
-.box-4{
+.box-4 {
   background: rgb(2, 0, 36);
   background: linear-gradient(
     184deg,
@@ -131,13 +131,10 @@
   );
 }
 
-.scroll-container::-webkit-scrollbar{
+.scroll-container::-webkit-scrollbar {
   display: none;
 }
-.scroll-container::ind
-
-
-.widget-2 {
+.scroll-container::ind .widget-2 {
   background: rgb(2, 0, 36);
   background: linear-gradient(
     184deg,
@@ -174,18 +171,30 @@
     0px 4px 4px 0px rgba(0, 0, 0, 0.1), 0px 8px 8px 0px rgba(0, 0, 0, 0.1);
 }
 
-.clipped{
+.clipped {
   clip-path: inset(100%);
 }
 
 .bx-shadow-light {
-  box-shadow: 
-    0px 1px 1px 0px rgba(0, 0, 0, 0.05),
-    inset 0px 1px 1px 0px #fff,
+  box-shadow: 0px 1px 1px 0px rgba(0, 0, 0, 0.05), inset 0px 1px 1px 0px #fff,
     inset 0px 0px 0px 1px hsla(0, 0%, 100%, 0.1),
     0px 0px 1px 0px rgba(0, 0, 0, 0.5);
 }
 
-.animation-container{
-  @apply flex relative gap-2 px-3 bg-[#0B0B09] bx-shadow rounded-xl xl:min-w-[37.5rem] xl:max-w-[400px] overflow-hidden items-center justify-center border-2 border-[hsla(0,0%,100%,.03)]
+.animation-container {
+  @apply flex relative gap-2 px-3 bg-[#0B0B09] bx-shadow rounded-xl xl:min-w-[37.5rem] xl:max-w-[400px] overflow-hidden items-center justify-center border-2 border-[hsla(0,0%,100%,.03)];
+}
+
+.loading-spinners_rotateFast__a3gT9 {
+  animation: rotate-fast 0.55s linear infinite;
+}
+
+@keyframes rotate-fast {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(1turn);
+  }
 }

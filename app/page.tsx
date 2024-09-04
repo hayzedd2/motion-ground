@@ -17,7 +17,7 @@ const playgroundPage = () => {
       <main className="text-[#d1d1cb] max-w-[40rem] mx-auto pb-20">
         <AboutMe />
         {/* <Offset/> */}
-        {/* <Pair/> */}
+        <Pair/>
         <Drawer />
         <Filter />
         <Toolbar />
