@@ -4,10 +4,12 @@ import React, { useState, useEffect } from "react";
 import { HiDownload } from "react-icons/hi";
 import { AnimatePresence, motion } from "framer-motion";
 import { GrCloudDownload } from "react-icons/gr";
+import { LuRotateCcw } from "react-icons/lu";
 
 const Pair = () => {
   type downloadingState = "default" | "downloading" | "downloaded";
   const [downloadNum, setDownloadNum] = useState<number>(0);
+  const [isAnimationCompleted, setIsAnimationCompleted] = useState(false);
   const [downloadState, setDownloadState] =
     useState<downloadingState>("default");
   const downloadNumber = [0, 1, 2, 3];
@@ -34,22 +36,22 @@ const Pair = () => {
       height: "44px",
       borderRadius: "50%",
       paddingInline: "0px",
-      backgroundColor : "#3498db"
+      backgroundColor: "#3498db",
     },
     downloading: {
-      width: "292px",
+      width: "296px",
       height: "44px",
       borderRadius: "22px",
       justifyContent: "between",
       paddingInline: "14px",
-      backgroundColor: '#f39c12',
+      backgroundColor: "#f39c12",
     },
     downloaded: {
       width: "150px",
       height: "44px",
       borderRadius: "20px",
       paddingInline: "0px",
-      backgroundColor: '#2ecc71',
+      backgroundColor: "#2ecc71",
     },
   };
   const contentVariants = {
@@ -63,7 +65,7 @@ const Pair = () => {
       setDownloadState("downloading");
       setDownloadNum(0);
     } else if (downloadState === "downloaded") {
-      setDownloadState("default");
+      // setDownloadState("default");
       setDownloadNum(0);
     }
   };
@@ -71,11 +73,31 @@ const Pair = () => {
   return (
     <section className="py-10 xl:px-4 sm:px-0">
       <div className="animation-container max-h-[300px] min-h-[300px]">
+        {isAnimationCompleted && (
+          <div className="absolute top-4 right-5  rounded-lg  py-2 px-[2rem]  bx-shadow cursor-pointer">
+            <button
+              onClick={() => {
+                setIsAnimationCompleted(false);
+                setDownloadState("default");
+              }}
+              className="flex gap-1 items-center justify-center"
+            >
+              <LuRotateCcw className="text-[0.95rem]"/>
+              Re-run
+            </button>
+          </div>
+        )}
+
         <motion.button
           className="bx-shadow  cursor-pointer bg flex items-center"
           variants={buttonVariants}
           initial="initial"
           animate={downloadState}
+          onAnimationComplete={() => {
+            if (downloadState === "downloaded") {
+              setIsAnimationCompleted(true);
+            }
+          }}
           onClick={handleClick}
           // whileHover={{ scale: 1.05 }}
           whileTap={{ scale: 0.95 }}
@@ -88,6 +110,7 @@ const Pair = () => {
           )}
           <motion.div
             variants={contentVariants}
+            // onAnimationComplete={() => setAnimationIsCompleted(true)}
             initial="initial"
             animate={downloadState}
             className="flex items-center w-full"
@@ -97,18 +120,18 @@ const Pair = () => {
                 <div>
                   <GrCloudDownload className="text-white" />
                 </div>
-                <div className="flex mt-[6px] gap-3  font-[500] items-center">
+                <div className="flex mt-[4px] gap-3  font-[500] items-center">
                   <motion.h6
-                    initial={{ opacity: 0, }}
-                    animate={{ opacity: 1,}}
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
                     transition={{
                       duration: 0.3,
                       ease: "easeInOut",
                       delay: 0.2,
                     }}
-                    className="flex gap-2 text-[0.95rem] items-center"
+                    className="flex gap-1 items-center"
                   >
-                    Downloading in
+                    Your download begins in
                     <p className="flex flex-col h-[22px]  overflow-hidden">
                       {downloadNumber.map((num, index) => {
                         return (
@@ -159,14 +182,12 @@ const Pair = () => {
               </motion.div>
             )}
             {downloadState === "downloaded" && (
-             <motion.div className="flex items-center font-[500] text-white justify-center w-[150px]">
-              <p>Downloaded!</p>
-             </motion.div>
-
+              <motion.div className="flex items-center font-[500] text-white justify-center w-[150px]">
+                <p>Downloaded!</p>
+              </motion.div>
             )}
           </motion.div>
         </motion.button>
-        
       </div>
     </section>
   );
