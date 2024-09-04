@@ -30,24 +30,24 @@ const Pair = () => {
   }, [downloadState]);
   const buttonVariants = {
     initial: {
-      width: "40px",
-      height: "40px",
+      width: "44px",
+      height: "44px",
       borderRadius: "50%",
       paddingInline: "0px",
       backgroundColor : "#3498db"
     },
     downloading: {
-      width: "288px",
-      height: "40px",
-      borderRadius: "18px",
+      width: "292px",
+      height: "44px",
+      borderRadius: "22px",
       justifyContent: "between",
-      paddingInline: "12px",
+      paddingInline: "14px",
       backgroundColor: '#f39c12',
     },
     downloaded: {
       width: "150px",
-      height: "40px",
-      borderRadius: "18px",
+      height: "44px",
+      borderRadius: "20px",
       paddingInline: "0px",
       backgroundColor: '#2ecc71',
     },
@@ -95,7 +95,7 @@ const Pair = () => {
             {downloadState === "downloading" && (
               <motion.div className="w-full flex items-center justify-between">
                 <div>
-                  <GrCloudDownload className="" />
+                  <GrCloudDownload className="text-white" />
                 </div>
                 <div className="flex mt-[6px] gap-3  font-[500] items-center">
                   <motion.h6
@@ -135,7 +135,7 @@ const Pair = () => {
                   </motion.h6>
                   <div>
                     <svg
-                      className="h-4 w-4 loading-spinners_rotateFast__a3gT9"
+                      className="h-4 w-4 text-white loading-spinners_rotateFast__a3gT9"
                       xmlns="http://www.w3.org/2000/svg"
                       fill="none"
                       viewBox="0 0 24 24"
@@ -159,7 +159,7 @@ const Pair = () => {
               </motion.div>
             )}
             {downloadState === "downloaded" && (
-             <motion.div className="flex items-center justify-center w-[150px]">
+             <motion.div className="flex items-center font-[500] text-white justify-center w-[150px]">
               <p>Downloaded!</p>
              </motion.div>
 
