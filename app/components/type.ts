@@ -30,8 +30,15 @@ export type DrawerProp = {
   icon: React.ReactNode;
 };
 
+export type GridProp = {
+  color: string;
+  empty: boolean;
+};
 
-export type GridProp={
-  color:string
-  empty:boolean
-}
+export type VoiceProp = {
+  id: number;
+  name: string;
+  picture: StaticImageData; 
+  zIndex:number
+  initial : boolean
+};

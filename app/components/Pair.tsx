@@ -72,7 +72,7 @@ const Pair = () => {
 
   return (
     <section className="py-10 xl:px-4 sm:px-0">
-      <div className="animation-container max-h-[300px] min-h-[300px]">
+      <div className="animation-container max-h-[200px] min-h-[200px]">
         {isAnimationCompleted && (
           <div className="absolute top-4 right-5  rounded-lg  py-2 px-[2rem]  bx-shadow cursor-pointer">
             <button
