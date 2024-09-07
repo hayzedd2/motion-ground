@@ -8,21 +8,24 @@ export const VoiceChatArr = [
         name:"Hayzedd",
         picture:listener1,
         zIndex : 40,
-        initial : true
+        initial : true,
+        speaking:true
     },
     {
         id:2,
         name:"Hayzedd",
         picture:listener2,
         zIndex:30,
-        initial : true
+        initial : true,
+        speaking:false
     },
     {
         id:3,
         name:"Hayzedd",
         picture:listener3,
         zIndex: 20,
-        initial: true
+        initial: true,
+        speaking:false
     },
     
    
@@ -31,21 +34,24 @@ export const VoiceChatArr = [
         name:"Hayzedd",
         picture:listener3,
         zIndex: 20,
-        initial: false
+        initial: false,
+        speaking:false
     },
     {
         id:5,
         name:"Hayzedd",
         picture:listener3,
         zIndex: 20,
-        initial: false
+        initial: false,
+        speaking:false
     },
     {
         id:6,
         name:"Hayzedd",
         picture:listener3,
         zIndex: 20,
-        initial: false
+        initial: false,
+        speaking:true
     },
    
 ]

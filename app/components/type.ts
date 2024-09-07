@@ -41,4 +41,5 @@ export type VoiceProp = {
   picture: StaticImageData; 
   zIndex:number
   initial : boolean
+  speaking :boolean
 };

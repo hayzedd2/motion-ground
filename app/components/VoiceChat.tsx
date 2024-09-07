@@ -13,15 +13,15 @@ const VoiceChat = () => {
       paddingLeft: "5px",
       gap: 1,
       paddingBlock: "0.4rem",
-      height: "60px",
-      width: "175px",
+      height: "65px",
+      width: "195px",
     },
     animate: {
       paddingLeft: "0px",
       gap: 2,
       paddingBlock: "0.8rem",
-      height: "220px",
-      width: "215px",
+      height: "230px",
+      width: "235px",
     },
   };
   const voiceChatItemVariants = {
@@ -59,8 +59,12 @@ const VoiceChat = () => {
           }}
           className="bg-white  overflow-hiden  relative cursor-pointer items-center justify-center flex  flex-wap rounded-[28px]"
         >
-          <MusicPlayingSimulation />
-          <div className={`flex flex-wrap items-center justify-center ${isInitial === "initial" ? "": "gap-3"}`}>
+          {isInitial == "initial" && <MusicPlayingSimulation />}
+          <div
+            className={`flex flex-wrap items-center justify-center ${
+              isInitial === "initial" ? "" : "gap-3"
+            }`}
+          >
             {(isInitial === "initial"
               ? VoiceChatArr.filter((voice) => voice.initial === true)
               : VoiceChatArr
@@ -78,9 +82,9 @@ const VoiceChat = () => {
                     translateY: isInitial === "animate" ? "0px" : "0px",
                   }}
                   transition={{
-                    ease:"easeInOut",
-                    duration : 0.3,
-                    staggerChildren : 1
+                    ease: "easeInOut",
+                    duration: 0.3,
+                    staggerChildren: 1,
                   }}
                   className={`fex relative flex-col ${
                     isInitial === "initial"
@@ -91,19 +95,22 @@ const VoiceChat = () => {
                     zIndex: voice.zIndex,
                   }}
                 >
-                 <div className="flex flex-col">
-                 <div className="bg-white bx-shadow-light rounded-full p-[0.09rem]">
-                    <div
-                      className={`w-11 h-11 rounded-full bg-cover bg-center`}
-                      style={{
-                        backgroundImage: `url(${voice.picture.src})`,
-                      }}
-                    ></div>
-                  </div>
-                  {/* {isInitial === "animate"&&(
-                    <p className="text-[0.8rem] text-black opacity-70">{voice.name}</p>
+                  <div className="flex flex-col">
+                    <div className="bg-white bx-shadow-light relative rounded-full p-[0.09rem]">
+                      {voice.speaking == true && isInitial == "animate" && (
+                        <MusicPlayingSimulation />
+                      )}
+                      <div
+                        className={`w-[3.2rem] h-[3.2rem] rounded-full bg-cover bg-center`}
+                        style={{
+                          backgroundImage: `url(${voice.picture.src})`,
+                        }}
+                      ></div>
+                    </div>
+                    {/* {isInitial === "animate"&&(
+                    <p className="text-[0.65rem] text-black opacity-70">{voice.name}</p>
                   )} */}
-                 </div>
+                  </div>
                 </motion.div>
               );
             })}
