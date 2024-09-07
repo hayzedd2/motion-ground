@@ -5,6 +5,7 @@ import { VoiceChatArr } from "./contents/VoiceChatContent";
 import { FaAngleDown } from "react-icons/fa";
 import MusicPlayingSimulation from "./semi-components/MusicPlayingSimulation";
 import { useState } from "react";
+import { toast } from "sonner";
 
 const VoiceChat = () => {
   const [isInitial, setIsInitial] = useState("initial");
@@ -20,7 +21,7 @@ const VoiceChat = () => {
       paddingLeft: "0px",
       gap: 2,
       paddingBlock: "0.8rem",
-      height: "230px",
+      height: "250px",
       width: "235px",
     },
   };
@@ -43,6 +44,7 @@ const VoiceChat = () => {
   };
   return (
     <section className="py-10 xl:px-4 sm:px-0">
+      <AboutText />
       <div className="min-h-[400px] max-h-[400px]  animation-container">
         <motion.div
           initial="initial"
@@ -50,16 +52,24 @@ const VoiceChat = () => {
           animate={isInitial}
           layout
           transition={{
-            duration: 0.3,
-            ease: "easeInOut",
+            duration: 0.4,
+            // ease: [0.43, 0.13, 0.23, 0.96]
+            ease: [0.34, 1.56, 0.64, 1],
+            // ease: [0.45, 0.05, 0.55, 0.95]
           }}
-          onClick={handleClick}
           style={{
             flexDirection: isInitial === "initial" ? "row" : "column",
           }}
-          className="bg-white  overflow-hiden  relative cursor-pointer items-center justify-center flex  flex-wap rounded-[28px]"
+          className="bg-white  overflow-hiden  relative items-center justify-center flex  flex-wap rounded-[30px]"
         >
-          {isInitial == "initial" && <MusicPlayingSimulation />}
+          <div
+            style={{
+              opacity: isInitial == "initial" ? 1 : 0,
+            }}
+          >
+            <MusicPlayingSimulation />
+          </div>
+
           <div
             className={`flex flex-wrap items-center justify-center ${
               isInitial === "initial" ? "" : "gap-3"
@@ -82,9 +92,8 @@ const VoiceChat = () => {
                     translateY: isInitial === "animate" ? "0px" : "0px",
                   }}
                   transition={{
-                    ease: "easeInOut",
+                    ease: [0.45, 0.05, 0.55, 0.95],
                     duration: 0.3,
-                    staggerChildren: 1,
                   }}
                   className={`fex relative flex-col ${
                     isInitial === "initial"
@@ -95,7 +104,7 @@ const VoiceChat = () => {
                     zIndex: voice.zIndex,
                   }}
                 >
-                  <div className="flex flex-col">
+                  <motion.div layout className="flex flex-col items-center">
                     <div className="bg-white bx-shadow-light relative rounded-full p-[0.09rem]">
                       {voice.speaking == true && isInitial == "animate" && (
                         <MusicPlayingSimulation />
@@ -107,16 +116,45 @@ const VoiceChat = () => {
                         }}
                       ></div>
                     </div>
-                    {/* {isInitial === "animate"&&(
-                    <p className="text-[0.65rem] text-black opacity-70">{voice.name}</p>
-                  )} */}
-                  </div>
+                  </motion.div>
                 </motion.div>
               );
             })}
           </div>
+          {isInitial == "animate" && (
+            <button
+              className="w-6 h-6 absolute right-[15px] top-[8px]   rounded-full flex items-center justify-center cursor-pointer"
+              onClick={handleClick}
+            >
+              <svg
+                width="12"
+                height="12"
+                viewBox="0 0 12 12"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <path
+                  d="M10.4854 1.99998L2.00007 10.4853"
+                  stroke="#999999"
+                  stroke-width="3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                ></path>
+                <path
+                  d="M10.4854 10.4844L2.00007 1.99908"
+                  stroke="#999999"
+                  stroke-width="3"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                ></path>
+              </svg>
+            </button>
+          )}
           {isInitial === "initial" && (
-            <div className="flex items-center justify-center mt-[5px] gap-[0.175rem] text-black opacity-70">
+            <div
+              onClick={handleClick}
+              className="flex cursor-pointer items-center justify-center mt-[5px] gap-[0.175rem] text-black opacity-70"
+            >
               <p>+3</p>
               <FaAngleDown />
             </div>
@@ -133,12 +171,13 @@ const VoiceChat = () => {
               }}
               transition={{
                 duration: 0.3,
-                ease: "easeInOut",
+                ease: [0.45, 0.05, 0.55, 0.95],
                 delay: 0.2,
               }}
-              className="w-[90%] text-white bx-shadow py-2 rounded-[10px] mt-4 bg-black"
+              onClick={() => toast("You have joined the chat :)")}
+              className="w-[90%] cursor-pointer text-white bx-shadow py-2 rounded-[10px] mt-4 bg-black"
             >
-              Join Space
+              Join voice chat
             </motion.button>
           )}
         </motion.div>
@@ -148,3 +187,11 @@ const VoiceChat = () => {
 };
 
 export default VoiceChat;
+
+export const AboutText = () => {
+  return (
+    <div className="w-full pb-5 px-4">
+      <h1 className="text-[1.2rem]">Voice chat</h1>
+    </div>
+  );
+};
