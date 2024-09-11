@@ -43,3 +43,11 @@ export type VoiceProp = {
   initial : boolean
   speaking :boolean
 };
+
+
+export type ProjectProp = {
+  name : string
+  description : string
+  image : string
+  skills : string[]
+}
