@@ -5,9 +5,9 @@ import { ProjectProp } from "./type";
 import { projectArr } from "./contents/ProjectContent";
 import { AnimatePresence, motion } from "framer-motion";
 const DottedLine = ({ backgroundColor = "transparent" }) => {
-  const totalDots = Math.floor(250 / (4 + 8));
+  const totalDots = Math.floor(350 / (4 + 8));
   return (
-    <div style={{ width: "100%" }}>
+    <div style={{ width: "100%", }}>
       <svg
         width="100%"
         className="mt-2"
@@ -44,7 +44,7 @@ const PortfolioWidget = () => {
         }}
       >
         <div className="projectcon w-[18rem] relative px-5 py-6 rounded-[28px] bg-[#1c1c1c]">
-          <p className="text-[0.85rem] text-[#616060] mb-1">
+          <p className="text-[0.8rem] text-[#616060] mb-1">
             Personal Projects
           </p>
           <div className="flex gap-2 flex-col">
@@ -106,7 +106,7 @@ export const PortfolioProjectCard = ({
           </motion.h6>
           <motion.p
             layoutId={`${project.name}description`}
-            className="text-[#616060] text-[0.8rem]  font-[500]"
+            className="text-[#616060] text-[0.75rem]  font-[500]"
           >
             {project.description}
           </motion.p>
@@ -130,13 +130,14 @@ export const PortfolioProjectModal = ({
       {!!project && (
         <div>
           <motion.div
-            onClick={onClick}
+
+            
             layoutId={`${project.name}container`}
-            className="flex flex-col justify-center absolute p-5 bg-[#1c1c1c] rounded-[28px] top-0 right-0 left-0 bottom-0  cursor-pointer"
+            className="flex flex-col justify-center absolute p-5 bg-[#1c1c1c] rounded-[28px] top-0 right-0 left-0 bottom-0  "
           >
-            {/* <button
-              className="w-8 h-8 bg-[#F7F8F9] absolute top-20 right-0 rounded-full flex items-center justify-center cursor-pointer"
-              //   onClick={() => setIsDrawerOpen(false)}
+            <button
+              className="w-6 h-6 text-white absolute top-2 right-5 rounded-full flex items-center justify-center cursor-pointer"
+              onClick={onClick}
             >
               <svg
                 width="12"
@@ -160,7 +161,7 @@ export const PortfolioProjectModal = ({
                   stroke-linejoin="round"
                 ></path>
               </svg>
-            </button> */}
+            </button>
             <motion.div className="flex gap-3">
               <motion.div
                 layoutId={`${project.name}textcontainer`}
@@ -185,7 +186,9 @@ export const PortfolioProjectModal = ({
               ></motion.div>
             </motion.div>
             <motion.ul className=" text-[#616060] font-[500] text-[0.9rem]">
-                <p className="underline underline-offset-2 my-1 text-[#d1d1cb] text-[0.9rem]">Skills used:</p>
+              <p className="underline underline-offset-2 my-1 text-[#d1d1cb] text-[0.9rem]">
+                Skills used:
+              </p>
               {project.skills.map((skill, index) => {
                 return (
                   <motion.li key={index} className="flex gap-2 items-center">
@@ -195,6 +198,9 @@ export const PortfolioProjectModal = ({
                 );
               })}
             </motion.ul>
+            <div className="my-1">
+              <p className="text-[0.75rem]">View it on <span className="underline underline-offset-2">Github</span></p>
+            </div>
           </motion.div>
           {/* <DottedLine /> */}
         </div>

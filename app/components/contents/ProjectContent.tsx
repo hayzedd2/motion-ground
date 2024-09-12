@@ -1,20 +1,20 @@
 export const projectArr = [
   {
-    name: "Calvest",
-    description: "Investment calculator for complex interest",
+    name: "Project1",
+    description: "A web application for data visualization and analysis.",
     image: "box-1",
-    skills: ["NextJs", "Typescript", "Prisma", "Supabase"] 
+    skills: ["NextJs", "Typescript", "Prisma", "Supabase"]
   },
   {
-    name: "Isocons",
-    description: "Customizable isometric icons for your projects.",
+    name: "Project2",
+    description: "Mobile app for task management and productivity tracking.",
     image: "box-3",
-    skills: ["NextJs", "Typescript", "Prisma", "Supabase"] 
+    skills: ["NextJs", "Framer-motion", "Tailwind-Css", "Supabase"]
   },
   {
-    name: "Coming soon",
-    description: "Currently under development, check back often.",
-    image :"box-4",
-    skills: ["NextJs", "Typescript", "Prisma", "Supabase"] 
+    name: "Project3",
+    description: "E-commerce platform with advanced search capabilities.",
+    image: "box-4",
+    skills: ["NextJs", "Typescript", "Prisma", "Golang"]
   },
 ];
