@@ -11,11 +11,13 @@ import Drawer from "./components/Drawer";
 import Pair from "./components/Pair";
 import VoiceChat from "./components/VoiceChat";
 import PortfolioWidget from "./components/PortfolioWidget";
+import SubtleInteraction from "./components/SubtleInteraction";
 
 const playgroundPage = () => {
   return (
     <section className="bg-[rgb(17,17,16)]">
       <main className="text-[#d1d1cb] max-w-[40rem] mx-auto pb-20">
+        <SubtleInteraction/>
         <AboutMe />
         <PortfolioWidget/>
         <VoiceChat />

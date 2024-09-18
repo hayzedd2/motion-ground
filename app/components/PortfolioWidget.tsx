@@ -37,6 +37,7 @@ const PortfolioWidget = () => {
   }, [currProject]);
   return (
     <section className="py-10 xl:px-4 sm:px-0">
+      <AboutText/>
       <div
         className="min-h-[400px] max-h-[400px]  animation-container"
         style={{
@@ -206,5 +207,16 @@ export const PortfolioProjectModal = ({
         </div>
       )}
     </AnimatePresence>
+  );
+};
+
+
+
+export const AboutText = () => {
+  return (
+    <div className="w-full pb-5 px-4">
+      <h1 className="text-[1.2rem]">Portfolio Card Widget</h1>
+      <p className="text-[0.85rem]">Click on each project to see more about them.</p>
+    </div>
   );
 };
