@@ -103,7 +103,7 @@ interface OverlayDrawerProp {
   selectedDrawer: DrawerProp | null;
   setSelectedDrawer: Dispatch<SetStateAction<DrawerProp | null>>;
 }
-export const OverlayDrawer = ({
+const OverlayDrawer = ({
   selectedDrawer,
   setSelectedDrawer,
 }: OverlayDrawerProp) => {
