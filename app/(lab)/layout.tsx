@@ -5,6 +5,10 @@ import { motion, AnimatePresence } from "framer-motion";
 import { usePathname } from "next/navigation";
 import { Navigation } from "../components/semi-components/ComponentCards";
 import { Analytics } from "@vercel/analytics/react";
+import Link from "next/link";
+import { MdNavigateBefore } from "react-icons/md";
+import { GrHomeOption } from "react-icons/gr";
+import { RiHomeOfficeLine } from "react-icons/ri";
 interface LabLayoutProps {
   children: React.ReactNode;
 }
@@ -35,6 +39,7 @@ const ProtectedLayout = ({ children }: LabLayoutProps) => {
       layout
     >
       <AnimatePresence mode="wait">
+        
         <motion.div
           key={pathname}
           initial="initial"
@@ -44,6 +49,7 @@ const ProtectedLayout = ({ children }: LabLayoutProps) => {
           transition={pageTransition}
           className="max-w-[40rem] w-full  text-[#d1d1cb] mx-auto"
         >
+          <Link href={'/'} className="flex gap-[0.35rem]  items-center mb-7 px-4"><RiHomeOfficeLine/>Home</Link>
           <div className="">{children}</div>
           <div className="w-full">
             <Navigation />
