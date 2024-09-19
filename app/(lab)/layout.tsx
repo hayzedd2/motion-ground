@@ -4,7 +4,7 @@ import React from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { usePathname } from "next/navigation";
 import { Navigation } from "../components/semi-components/ComponentCards";
-
+import { Analytics } from "@vercel/analytics/react";
 interface LabLayoutProps {
   children: React.ReactNode;
 }
@@ -18,11 +18,7 @@ const ProtectedLayout = ({ children }: LabLayoutProps) => {
       opacity: 1,
       filter: "blur(0px)",
     },
-    out: {
-      opacity: 0,
-      // y: 5,
-      // filter: "blur(2px)",
-    },
+
   };
   const pageTransition = {
     type: "tween",
@@ -51,6 +47,7 @@ const ProtectedLayout = ({ children }: LabLayoutProps) => {
           </div>
         </motion.div>
       </AnimatePresence>
+      <Analytics/>
     </motion.main>
   );
 };
