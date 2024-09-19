@@ -87,7 +87,7 @@ const SubtleInteraction = () => {
         <div className=" flex text-[0.95rem] font-[500] gap-[1.3rem] items-center justify-center">
           {links.map((link, index) => {
             return (
-              <div key={index} className="flex flex-col gap-3 items-center justify-center">
+              <div key={link.name} className="flex flex-col gap-3 items-center justify-center">
                 <span
                   style={{
                     backgroundColor: link.bg,
