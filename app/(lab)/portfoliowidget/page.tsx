@@ -81,8 +81,7 @@ interface projectModalProp {
   project: ProjectProp | null;
   onClick: () => void;
 }
-
-export const PortfolioProjectCard = ({
+const PortfolioProjectCard = ({
   project,
   onClick,
   showDottedLine,
@@ -121,7 +120,7 @@ export const PortfolioProjectCard = ({
   );
 };
 
-export const PortfolioProjectModal = ({
+const PortfolioProjectModal = ({
   project,
   onClick,
 }: projectModalProp) => {
@@ -210,7 +209,7 @@ export const PortfolioProjectModal = ({
   );
 };
 
-export const AboutText = () => {
+const AboutText = () => {
   return (
     <div className="w-full pb-5 px-4">
       <h1 className="text-[1.2rem]">Portfolio Card Widget</h1>

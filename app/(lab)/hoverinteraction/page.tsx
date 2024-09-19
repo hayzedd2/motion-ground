@@ -126,7 +126,7 @@ const SubtleInteraction = () => {
 
 export default SubtleInteraction;
 
-export const AboutText = () => {
+const AboutText = () => {
   return (
     <div className="w-full pb-5 px-4">
       <h1 className="text-[1.2rem]">Hover interaction</h1>
