@@ -27,18 +27,18 @@ export const NavigationConfig = [
 
   {
     href: "/download",
-    title: "Download interaction",
+    title: "Download",
     date: "Sep 2024",
   },
   {
     href: "/drawer",
-    title: "Stacked drawer Interaction",
+    title: "Stacked drawer",
     date: "Sep 2024",
   },
 
   {
     href: "/filter",
-    title: "Filter interaction",
+    title: "Filter",
     date: "Aug 2024",
   },
 
@@ -70,7 +70,7 @@ export const NavigationConfig = [
   },
   {
     href: "/widgetinteraction",
-    title: "Widget Interaction",
+    title: "Widget ",
     date: "Jun 2024",
   },
   {

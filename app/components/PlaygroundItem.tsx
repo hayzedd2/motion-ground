@@ -4,7 +4,7 @@ import Link from "next/link";
 const DottedLine = ({ backgroundColor = "transparent" }) => {
   const totalDots = Math.floor(400 / (4 + 8));
   return (
-    <div  className="basis-[40%]">
+    <div  className="xl:basis-[40%] sm:basis-[30%]">
       <svg
         width="100%"
         className="mt-2"
@@ -38,11 +38,11 @@ const PlaygroundItem = () => {
             <Link
               href={nav.href}
               key={index}
-              className="text-[1.05rem] flex w-full gap-3 justify-between items-center opacity-70 py-3"
+              className="xl:text-[1.05rem] sm:[text-0.95rem] flex w-full gap-3 justify-between items-center opacity-70 py-3"
             >
               <h5 className="basis-[35%]">{nav.title}</h5>
               <DottedLine />
-              <h5 className="basis-[25%] text-right">{nav.date}</h5>
+              <h5 className="xl:basis-[25%] sm:basis[35%] text-right">{nav.date}</h5>
             </Link>
           )
         )}

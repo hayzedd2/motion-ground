@@ -32,7 +32,7 @@ export const Navigation: React.FC = () => {
     return null;
   }
   return (
-    <div className="w-full justify-between flex items-center xl:px-4 sm:px-2">
+    <div className="w-full justify-between flex items-center flex-wrap gap-2 xl:px-4 sm:px-2">
       <PreviousComponentCard href={prevPage.href} title={prevPage.title} />
       <NextComponentCard href={nextPage.href} title={nextPage.title} />
     </div>
@@ -42,9 +42,9 @@ export const Navigation: React.FC = () => {
 export const NextComponentCard = ({ href, title }: ComponentCardProps) => {
   return (
     <Link href={href}>
-      <div className="py-3 px-6 mt-10 bg-[#0B0B09] flex flex-col bx-shadow rounded-[4px]">
+      <div className="py-3 px-6 mt-10 bg-transparent w-full basis-[50%] flex flex-col  justify-end  rounded-[4px]">
         <h6 className="font-[500]">Next</h6>
-        <h4 className="text-[1.1rem] opacity-70 flex items-center">
+        <h4 className="xl:text-[1.1rem] sm:text-base opacity-70 flex items-center">
           {title} <MdNavigateNext />
         </h4>
       </div>
@@ -54,9 +54,9 @@ export const NextComponentCard = ({ href, title }: ComponentCardProps) => {
 export const PreviousComponentCard = ({ href, title }: ComponentCardProps) => {
   return (
     <Link href={href}>
-      <div className="py-3 px-6 mt-10 bg-[#0B0B09] flex flex-col bx-shadow rounded-[4px]">
+      <div className="py-3 px-6 mt-10 bg-transparent w-full basis-[50%] flex flex-col  rounded-[4px]">
         <h6 className="font-[500]">Previous</h6>
-        <h4 className="text-[1.1rem] opacity-70 flex items-center ml-[-17px]">
+        <h4 className="xl:text-[1.1rem] sm:text-base opacity-70 flex items-center ml-[-17px]">
           <MdNavigateBefore />
           {title}
         </h4>

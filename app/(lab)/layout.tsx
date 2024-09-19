@@ -18,6 +18,9 @@ const ProtectedLayout = ({ children }: LabLayoutProps) => {
       opacity: 1,
       filter: "blur(0px)",
     },
+    exit :{
+      opacity : 0
+    }
 
   };
   const pageTransition = {
@@ -36,10 +39,10 @@ const ProtectedLayout = ({ children }: LabLayoutProps) => {
           key={pathname}
           initial="initial"
           animate="in"
-          // exit="out"
+          exit="out"
           variants={pageVariants}
           transition={pageTransition}
-          className="max-w-[40rem] w-full opacity-0 text-[#d1d1cb] mx-auto"
+          className="max-w-[40rem] w-full  text-[#d1d1cb] mx-auto"
         >
           <div className="">{children}</div>
           <div className="w-full">
