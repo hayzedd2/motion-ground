@@ -39,7 +39,6 @@ const ProtectedLayout = ({ children }: LabLayoutProps) => {
       layout
     >
       <AnimatePresence mode="wait">
-        
         <motion.div
           key={pathname}
           initial="initial"

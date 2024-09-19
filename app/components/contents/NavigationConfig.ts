@@ -36,46 +36,46 @@ export const NavigationConfig = [
     date: "Sep 2024",
   },
 
-  {
-    href: "/filter",
-    title: "Filter",
-    date: "Aug 2024",
-  },
+  // {
+  //   href: "/filter",
+  //   title: "Filter",
+  //   date: "Aug 2024",
+  // },
 
-  {
-    href: "/Toolbar",
-    title: "Toolbar",
-    date: "Aug 2024",
-  },
+  // {
+  //   href: "/Toolbar",
+  //   title: "Toolbar",
+  //   date: "Aug 2024",
+  // },
 
-  {
-    href: "/slide",
-    title: "Slide to unlock",
-    date: "Aug 2024",
-  },
-  {
-    href: "/album",
-    title: "Album",
-    date: "Aug 2024",
-  },
-  {
-    href: "/music",
-    title: "Music player",
-    date: "Aug 2024",
-  },
-  {
-    href: "/expandable",
-    title: "Expandable",
-    date: "Aug 2024",
-  },
-  {
-    href: "/widgetinteraction",
-    title: "Widget ",
-    date: "Jun 2024",
-  },
-  {
-    href: "/photoscarousel",
-    title: "Photo Carousel",
-    date: " May 2024",
-  },
+  // {
+  //   href: "/slide",
+  //   title: "Slide to unlock",
+  //   date: "Aug 2024",
+  // },
+  // {
+  //   href: "/album",
+  //   title: "Album",
+  //   date: "Aug 2024",
+  // },
+  // {
+  //   href: "/music",
+  //   title: "Music player",
+  //   date: "Aug 2024",
+  // },
+  // {
+  //   href: "/expandable",
+  //   title: "Expandable",
+  //   date: "Aug 2024",
+  // },
+  // {
+  //   href: "/widgetinteraction",
+  //   title: "Widget ",
+  //   date: "Jun 2024",
+  // },
+  // {
+  //   href: "/photoscarousel",
+  //   title: "Photo Carousel",
+  //   date: " May 2024",
+  // },
 ];
