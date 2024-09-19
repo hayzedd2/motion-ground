@@ -181,10 +181,6 @@
     0px 0px 1px 0px rgba(0, 0, 0, 0.5);
 }
 
-.animation-container {
-  @apply flex relative gap-2 px-3 bg-[#0B0B09] bx-shadow rounded-xl xl:min-w-[37.5rem] xl:max-w-[400px] overflow-hidden items-center justify-center border-2 border-[hsla(0,0%,100%,.03)];
-}
-
 .loading-spinners_rotateFast__a3gT9 {
   animation: rotate-fast 0.55s linear infinite;
 }
@@ -197,4 +193,8 @@
   100% {
     transform: rotate(1turn);
   }
+}
+
+.animation-container {
+  @apply flex relative gap-2 px-3 bg-[#0B0B09] bx-shadow rounded-xl xl:min-w-[37.5rem]  xl:max-w-[400px] sm:w-full overflow-hidden items-center justify-center border-2 border-[hsla(0,0%,100%,.03)];
 }

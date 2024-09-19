@@ -1,0 +1,66 @@
+"use client";
+
+import Link from "next/link";
+import { MdNavigateBefore, MdNavigateNext } from "react-icons/md";
+import { usePathname, useRouter } from "next/navigation";
+import { NavigationConfig } from "../contents/NavigationConfig";
+interface ComponentCardProps {
+  href: string;
+  title: string;
+}
+
+export const Navigation: React.FC = () => {
+  const router = useRouter();
+  const pathName = usePathname();
+  const currentIndex = NavigationConfig.findIndex(
+    (item) => item.href === pathName
+  );
+  const isHomepage = pathName === "/";
+  const prevPage =
+    !isHomepage && currentIndex > 0 ? NavigationConfig[currentIndex - 1] : null;
+  const nextPage =
+    !isHomepage && currentIndex < NavigationConfig.length - 1
+      ? NavigationConfig[currentIndex + 1]
+      : null;
+  if (isHomepage) {
+    return null;
+  }
+  if (!nextPage) {
+    return null;
+  }
+  if (!prevPage) {
+    return null;
+  }
+  return (
+    <div className="w-full justify-between flex items-center xl:px-4 sm:px-2">
+      <PreviousComponentCard href={prevPage.href} title={prevPage.title} />
+      <NextComponentCard href={nextPage.href} title={nextPage.title} />
+    </div>
+  );
+};
+
+export const NextComponentCard = ({ href, title }: ComponentCardProps) => {
+  return (
+    <Link href={href}>
+      <div className="py-3 px-6 mt-10 bg-[#0B0B09] flex flex-col bx-shadow rounded-[4px]">
+        <h6 className="font-[500]">Next</h6>
+        <h4 className="text-[1.1rem] opacity-70 flex items-center">
+          {title} <MdNavigateNext />
+        </h4>
+      </div>
+    </Link>
+  );
+};
+export const PreviousComponentCard = ({ href, title }: ComponentCardProps) => {
+  return (
+    <Link href={href}>
+      <div className="py-3 px-6 mt-10 bg-[#0B0B09] flex flex-col bx-shadow rounded-[4px]">
+        <h6 className="font-[500]">Previous</h6>
+        <h4 className="text-[1.1rem] opacity-70 flex items-center ml-[-17px]">
+          <MdNavigateBefore />
+          {title}
+        </h4>
+      </div>
+    </Link>
+  );
+};

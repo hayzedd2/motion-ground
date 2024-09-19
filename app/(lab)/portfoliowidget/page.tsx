@@ -1,13 +1,14 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { ProjectProp } from "./type";
-import { projectArr } from "./contents/ProjectContent";
+import { ProjectProp } from "../../components/type";
+import { projectArr } from "../../components/contents/ProjectContent";
 import { AnimatePresence, motion } from "framer-motion";
+
 const DottedLine = ({ backgroundColor = "transparent" }) => {
   const totalDots = Math.floor(350 / (4 + 8));
   return (
-    <div style={{ width: "100%", }}>
+    <div style={{ width: "100%" }}>
       <svg
         width="100%"
         className="mt-2"
@@ -36,18 +37,16 @@ const PortfolioWidget = () => {
     console.log(currProject);
   }, [currProject]);
   return (
-    <section className="py-10 xl:px-4 sm:px-0">
-      <AboutText/>
+    <div className="flex flex-col items-center">
+      <AboutText />
       <div
-        className="min-h-[400px] max-h-[400px]  animation-container"
+        className="min-h-[400px] max-h-[400px] animation-container"
         style={{
           backgroundColor: "#E9E9EB",
         }}
       >
         <div className="projectcon w-[18rem] relative px-5 py-6 rounded-[28px] bg-[#1c1c1c]">
-          <p className="text-[0.8rem] text-[#616060] mb-1">
-            Personal Projects
-          </p>
+          <p className="text-[0.8rem] text-[#616060] mb-1">Personal Projects</p>
           <div className="flex gap-2 flex-col">
             {projectArr.map((project, index) => {
               return (
@@ -67,7 +66,7 @@ const PortfolioWidget = () => {
           />
         </div>
       </div>
-    </section>
+    </div>
   );
 };
 
@@ -131,8 +130,6 @@ export const PortfolioProjectModal = ({
       {!!project && (
         <div>
           <motion.div
-
-            
             layoutId={`${project.name}container`}
             className="flex flex-col justify-center absolute p-5 bg-[#1c1c1c] rounded-[28px] top-0 right-0 left-0 bottom-0  "
           >
@@ -200,7 +197,10 @@ export const PortfolioProjectModal = ({
               })}
             </motion.ul>
             <div className="my-1">
-              <p className="text-[0.75rem]">View it on <span className="underline underline-offset-2">Github</span></p>
+              <p className="text-[0.75rem]">
+                View it on{" "}
+                <span className="underline underline-offset-2">Github</span>
+              </p>
             </div>
           </motion.div>
           {/* <DottedLine /> */}
@@ -210,13 +210,13 @@ export const PortfolioProjectModal = ({
   );
 };
 
-
-
 export const AboutText = () => {
   return (
     <div className="w-full pb-5 px-4">
       <h1 className="text-[1.2rem]">Portfolio Card Widget</h1>
-      <p className="text-[0.85rem]">Click on each project to see more about them.</p>
+      <p className="text-[0.85rem]">
+        Click on each project to see more about them.
+      </p>
     </div>
   );
 };

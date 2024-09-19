@@ -3,8 +3,7 @@ import { Newsreader } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/react";
 import { Toaster } from "sonner";
-// const newsReader = Newsreader({subsets : ["latin"] , display : "swap"})
-const newsReader = Newsreader({subsets : ["latin"]})
+const newsReader = Newsreader({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Playground",
@@ -18,9 +17,11 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={newsReader.className}>{children}</body>
-      <Analytics/>
-      <Toaster/>
+      <body className={newsReader.className}>
+        {children}
+      </body>
+      <Analytics />
+      <Toaster />
     </html>
   );
 }
