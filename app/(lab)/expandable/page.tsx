@@ -2,8 +2,8 @@
 
 import React, { useEffect, useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
-import { ItemProp } from "./type";
-import { content } from "./contents/contents";
+import { ItemProp } from "@/app/components/type";
+import { content } from "@/app/components/contents/contents";
 import { Button } from "@/components/ui/button";
 const Experiment = () => {
   const [selectedTab, setSelectedTab] = useState<ItemProp | null>(null);
@@ -11,7 +11,7 @@ const Experiment = () => {
     console.log(selectedTab);
   }, []);
   return (
-    <section className="py-10 xl:px-4 sm:px-0">
+    <section className="flex flex-col items-center">
       <div className="">
         <AboutText />
         <ul className="min-h-[400px] max-h-[400px]  animation-container">

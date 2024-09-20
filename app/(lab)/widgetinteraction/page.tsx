@@ -222,7 +222,7 @@ const WidgetInteraction = () => {
   const dragBuffer = 10;
 
   return (
-    <section className="py-10 xl:px-4 sm:px-0">
+    <section className="flex flex-col items-center justify-center">
       <AboutText />
       <div className="min-h-[400px] mt-3 max-h-[400px] animation-container">
         <motion.div

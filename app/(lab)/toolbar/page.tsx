@@ -1,10 +1,10 @@
 "use client";
 
 import React, { useState, useRef, useEffect, useLayoutEffect } from "react";
-import { ToolbarArr } from "./contents/ToolbarContents";
+import { ToolbarArr } from "@/app/components/contents/ToolbarContents";
 import { motion } from "framer-motion";
 import { HiOutlineMenu } from "react-icons/hi";
-import { ToolBarProp } from "./type";
+import { ToolBarProp } from "@/app/components/type";
 
 const Toolbar = () => {
   const [tool, setSelectedTool] = useState<ToolBarProp | null>(null);
@@ -34,7 +34,7 @@ const Toolbar = () => {
     }
   }, [tool]);
   return (
-    <section className="py-10 xl:px-4 sm:px-0">
+    <section className="flex flex-col items-center">
       <AboutText />
       <div
         className="min-h-[450px] max-h-[450px] pb-4 animation-container"

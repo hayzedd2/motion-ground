@@ -1,12 +1,12 @@
 "use client";
 
 import Image from "next/image";
-import nature2 from "../image/nature2.jpg";
-import nature3 from "../image/nature3.jpg";
-import nature4 from "../image/nature4.jpg";
-import nature1 from "../image/nature1.jpg";
-import nature5 from "../image/nature5.jpg";
-import nature6 from "../image/nature6.jpg";
+import nature2 from "../../image/nature2.jpg";
+import nature3 from "../../image/nature3.jpg";
+import nature4 from "../../image/nature4.jpg";
+import nature1 from "../../image/nature1.jpg";
+import nature5 from "../../image/nature5.jpg";
+import nature6 from '../../image/nature6.jpg'
 const images = [nature4, nature3, nature2, nature5, nature6, nature1];
 import { motion } from "framer-motion";
 import { Dispatch, SetStateAction, useState } from "react";
@@ -20,7 +20,7 @@ const PhotosCarousel = () => {
     setCurrentIndex((prev) => prev - 1);
   };
   return (
-    <div className="relative max-w-[40rem] pt-10 mx-auto">
+    <div className="relative max-w-[40rem] mx-auto">
       <div className="flex flex-col items-center  justify-center">
         <AboutText />
         <ImageIndicator currIndex={currIndex} setCurrIndex={setCurrentIndex} />
@@ -35,7 +35,7 @@ const PhotosCarousel = () => {
   );
 };
 
-export const AboutText = () => {
+const AboutText = () => {
   return (
     <div className="w-full pb-4 px-4 ">
       <h1 className="text-[1.2rem]">Image carousel</h1>
@@ -54,7 +54,7 @@ export const AboutText = () => {
   );
 };
 
-export const Images = ({ imgIndex }: { imgIndex: number }) => {
+const Images = ({ imgIndex }: { imgIndex: number }) => {
   return (
     <div className="flex xl:w-full  sm:w-full items-center overflow-hidden mx-auto">
       {images.map((image, index) => {
@@ -112,7 +112,7 @@ interface controllerProps {
   IncreaseCurrIndex: Dispatch<SetStateAction<number>>;
   DecreaseCurrIndex: Dispatch<SetStateAction<number>>;
 }
-export const CarouselControllers = ({
+const CarouselControllers = ({
   currIndex,
   IncreaseCurrIndex,
   DecreaseCurrIndex,

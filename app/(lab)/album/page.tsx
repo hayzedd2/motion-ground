@@ -1,9 +1,9 @@
 "use client";
 
 import React, { Dispatch, SetStateAction, useState } from "react";
-import { AlbumArr } from "./contents/AlbumContent";
+import { AlbumArr } from "@/app/components/contents/AlbumContent";
 import { motion } from "framer-motion";
-import { AlbumProp } from "./type";
+import { AlbumProp } from "@/app/components/type";
 import { AnimatePresence } from "framer-motion";
 
 const Album = () => {
@@ -12,7 +12,7 @@ const Album = () => {
     setSelectedImg(pic);
   };
   return (
-    <section className="py-10 xl:px-4 sm:px-0">
+    <section className="flex flex-col items-center">
       <AboutText />
       <div className="min-h-[400px] max-h-[400px]  animation-container image-grid">
         <div className="w-full relative grid-cols-3 sm:gap-2 xl:gap-3 max-w-[400px] grid">
@@ -58,7 +58,7 @@ interface BigImageProp {
   pic: AlbumProp | null;
   onClick: () => void;
 }
-export const BigImage = ({ pic, onClick }: BigImageProp) => {
+const BigImage = ({ pic, onClick }: BigImageProp) => {
   return (
     <>
       <AnimatePresence>
@@ -81,7 +81,7 @@ interface SideImageProp {
   selectedImage: AlbumProp | null;
   setSelectedImage: (pic : AlbumProp)=> void;
 }
-export const SideImages = ({
+const SideImages = ({
   selectedImage,
   setSelectedImage,
 }: SideImageProp) => {
@@ -109,7 +109,7 @@ export const SideImages = ({
     </>
   );
 };
-export const AboutText = () => {
+const AboutText = () => {
   return (
     <div className="w-full pb-5 px-4">
       <h1 className="text-[1.2rem]">Album</h1>

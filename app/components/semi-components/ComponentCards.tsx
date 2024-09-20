@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { MdNavigateBefore, MdNavigateNext } from "react-icons/md";
-import { usePathname, useRouter } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { NavigationConfig } from "../contents/NavigationConfig";
 interface ComponentCardProps {
   href: string;
@@ -10,7 +10,6 @@ interface ComponentCardProps {
 }
 
 export const Navigation: React.FC = () => {
-  const router = useRouter();
   const pathName = usePathname();
   const currentIndex = NavigationConfig.findIndex(
     (item) => item.href === pathName
@@ -25,16 +24,15 @@ export const Navigation: React.FC = () => {
   if (isHomepage) {
     return null;
   }
-  if (!nextPage) {
-    return null;
-  }
-  if (!prevPage) {
-    return null;
-  }
+
   return (
-    <div className="w-full justify-between flex items-center flex-wrap gap-2 xl:px-4 sm:px-2">
-      <PreviousComponentCard href={prevPage.href} title={prevPage.title} />
-      <NextComponentCard href={nextPage.href} title={nextPage.title} />
+    <div className="w-full mt-5 justify-between flex items-center flex-wrap gap-2 xl:px-4 sm:px-2">
+      {prevPage && (
+        <PreviousComponentCard href={prevPage.href} title={prevPage.title} />
+      )}
+      {nextPage && (
+        <NextComponentCard href={nextPage.href} title={nextPage.title} />
+      )}
     </div>
   );
 };
@@ -42,7 +40,7 @@ export const Navigation: React.FC = () => {
 export const NextComponentCard = ({ href, title }: ComponentCardProps) => {
   return (
     <Link href={href}>
-      <div className="py-3 px-6 mt-10 bg-transparent w-full basis-[50%] flex flex-col  justify-end  rounded-[4px]">
+      <div className="py-3 px-6  bg-transparent w-full basis-[50%] flex flex-col  justify-end  rounded-[4px]">
         <h6 className="font-[500]">Next</h6>
         <h4 className="xl:text-[1.1rem] sm:text-base opacity-70 flex items-center">
           {title} <MdNavigateNext />
@@ -54,7 +52,7 @@ export const NextComponentCard = ({ href, title }: ComponentCardProps) => {
 export const PreviousComponentCard = ({ href, title }: ComponentCardProps) => {
   return (
     <Link href={href}>
-      <div className="py-3 px-6 mt-10 bg-transparent w-full basis-[50%] flex flex-col  rounded-[4px]">
+      <div className="py-3 px-6 bg-transparent w-full basis-[50%] flex flex-col  rounded-[4px]">
         <h6 className="font-[500]">Previous</h6>
         <h4 className="xl:text-[1.1rem] sm:text-base opacity-70 flex items-center ml-[-17px]">
           <MdNavigateBefore />

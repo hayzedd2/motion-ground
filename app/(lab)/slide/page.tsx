@@ -31,7 +31,7 @@ const Slide = () => {
   };
 
   return (
-    <section className="py-10 xl:px-4 sm:px-0">
+    <section className="flex flex-col items-center">
       <AboutText />
       <div className="min-h-[200px] max-h-[200px] pb-4 animation-container">
         <motion.div
@@ -54,7 +54,11 @@ const Slide = () => {
             }}
             className="w-[4.2rem] h-full relative z-50 rounded-[1.5rem] cursor-grab bg-[#111110] bx-shadow flex items-center justify-center"
           >
-            {isUnlocked ? <BsUnlock className="text-[1.2rem]" /> : <BsLock className="text-[1.2rem]"/>}
+            {isUnlocked ? (
+              <BsUnlock className="text-[1.2rem]" />
+            ) : (
+              <BsLock className="text-[1.2rem]" />
+            )}
           </motion.button>
           <motion.p className="text-[0.95rem] h-[1rem] overflow-hidden flex flex-col">
             {progress.map((pro) => {

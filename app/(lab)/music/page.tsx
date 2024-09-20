@@ -4,7 +4,7 @@ import React, { useState, useEffect } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { IoPause, IoPlay, IoPlayBack, IoPlayForward } from "react-icons/io5";
 
-export const Music = () => {
+const Music = () => {
   const [currState, setCurrState] = useState("default");
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(120); // 2 minutes in seconds
@@ -37,7 +37,7 @@ export const Music = () => {
     return (currentTime / duration) * 100;
   };
   return (
-    <section className="py-10 xl:px-4 sm:px-0">
+    <section className="flex flex-col items-center">
       <AboutText />
       <div className="min-h-[400px] max-h-[400px] animation-container">
         <AnimatePresence mode="wait">
@@ -242,8 +242,9 @@ export const Music = () => {
     </section>
   );
 };
+export default Music
 
-export const AboutText = () => {
+const AboutText = () => {
   return (
     <div className="w-full pb-5 px-4">
       <h1 className="text-[1.2rem]">Music Player</h1>
