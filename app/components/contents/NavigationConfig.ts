@@ -4,11 +4,11 @@ export const NavigationConfig = [
     title: "Home",
     date: "",
   },
-  // {
-  //   href: "/pricefilter",
-  //   title: "Price Filter",
-  //   date: "Sep 2024",
-  // },
+  {
+    href: "/pricefilter",
+    title: "Price Filter",
+    date: "Sep 2024",
+  },
   {
     href: "/hoverinteraction",
     title: "Hover Interaction",

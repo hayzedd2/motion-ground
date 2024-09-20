@@ -35,7 +35,7 @@ const PlaygroundItem = () => {
           <p>Scroll</p>
           <FaArrowRightLong/>
         </div>
-        <div className="flex flex-col gap-2 w-full h-[25rem] overflow-scroll scroll-container">
+        <div className="flex flex-col gap-2 w-full h-[28rem] overflow-scroll scroll-container">
           <div>
             <p className="font-[500] text-[1.2rem]">Components</p>
           </div>
