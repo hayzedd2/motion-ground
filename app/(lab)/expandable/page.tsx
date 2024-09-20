@@ -42,7 +42,7 @@ interface ModalProps {
   items: ItemProp | null;
   onClick: () => void;
 }
-export const Modal = ({ items, onClick }: ModalProps) => {
+const Modal = ({ items, onClick }: ModalProps) => {
   return (
     <>
       <AnimatePresence>
@@ -105,8 +105,7 @@ export const Modal = ({ items, onClick }: ModalProps) => {
     </>
   );
 };
-
-export const Card = ({ items, onClick }: CardProps) => {
+const Card = ({ items, onClick }: CardProps) => {
   return (
     <motion.li
       key={items.title}
@@ -132,7 +131,7 @@ export const Card = ({ items, onClick }: CardProps) => {
     </motion.li>
   );
 };
-export const AboutText = () => {
+const AboutText = () => {
   return (
     <div className="w-full pb-5 px-4">
       <h1 className="text-[1.2rem]">Expandable blocks</h1>

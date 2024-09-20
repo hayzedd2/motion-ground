@@ -296,7 +296,7 @@ const WidgetIndicator = ({
     </div>
   );
 };
-export const AboutText = () => {
+const AboutText = () => {
   return (
     <div className="w-full px-4">
       <h1 className="text-[1.2rem]">Widget scroll</h1>

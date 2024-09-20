@@ -43,7 +43,7 @@ interface SingleImgProp {
   pic: AlbumProp;
   onClick: () => void;
 }
-export const SingleImg = ({ pic, onClick }: SingleImgProp) => {
+const SingleImg = ({ pic, onClick }: SingleImgProp) => {
   return (
     <>
       <motion.div

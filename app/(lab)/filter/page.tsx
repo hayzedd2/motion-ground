@@ -97,8 +97,7 @@ const Filter = () => {
 };
 
 export default Filter;
-
-export const AboutText = () => {
+const AboutText = () => {
   return (
     <div className="w-full pb-5 px-4">
       <h1 className="text-[1.2rem]">Filter interaction</h1>

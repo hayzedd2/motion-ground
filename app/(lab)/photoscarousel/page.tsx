@@ -88,7 +88,7 @@ interface imageProps {
   currIndex: number;
   setCurrIndex: Dispatch<SetStateAction<number>>;
 }
-export const ImageIndicator = ({ currIndex, setCurrIndex }: imageProps) => {
+const ImageIndicator = ({ currIndex, setCurrIndex }: imageProps) => {
   return (
     <div className="flex indicator w-full px-4 overflow-scroll mx-auto items-start justify-start gap-2">
       {images.map((image, index) => {
