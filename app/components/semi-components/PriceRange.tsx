@@ -73,21 +73,22 @@ export default function PriceRangeSlider({
       <div className="w-full my-2 flex items-center justify-between">
         <div className="flex flex-col gap-1">
           <h6 className="text-[0.95rem] text-black font-[500] opacity-80">
-            From
+            Minimum price
           </h6>
           <MotionNumber
-            format={{ minimumIntegerDigits: 4, currency: "USD" }}
-            value={range[0]}
+            format={{ minimumIntegerDigits:3, currency: "USD" }}
+            value={`${range[0]}`}
             className="text-[1.2rem] font-[600] text-black"
           />
         </div>
         <div className="flex flex-col gap-1">
           <h6 className="text-[0.95rem] text-black font-[500] opacity-80">
-            To
+            Maximum price
           </h6>
           <MotionNumber
-            format={{ minimumIntegerDigits: 4, currency: "USD" }}
+            format={{minimumIntegerDigits: 4, currency: "USD" }}
             value={range[1]}
+            
             className="text-[1.2rem] font-[600] text-black"
           />
         </div>

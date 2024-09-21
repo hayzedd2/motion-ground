@@ -42,11 +42,15 @@ const PriceFilter = () => {
             {isOpen && (
               <motion.div
                 initial={{ opacity: 0 }}
-                animate={{ opacity: 1}}
+                animate={{ opacity: 1, transition: { delay: 0.1 } }}
                 exit={{ opacity: 0 }}
                 className=""
               >
-                <PriceRangeSlider range={range} setRange={setRange} setIsOpen={setIsOpen} />
+                <PriceRangeSlider
+                  range={range}
+                  setRange={setRange}
+                  setIsOpen={setIsOpen}
+                />
               </motion.div>
             )}
           </AnimatePresence>
@@ -63,7 +67,7 @@ const PriceFilter = () => {
                   transition={{
                     duration: 0.3,
                   }}
-                  onClick={()=> setRange([3845, 10000])}
+                  onClick={() => setRange([3845, 10000])}
                   className=" bg-transparent h-[2.5rem] text-black rounded-xl bx-shadow-light"
                 >
                   Reset
