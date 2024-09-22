@@ -2,7 +2,7 @@
 
 import * as Slider from "@radix-ui/react-slider";
 import MotionNumber from "motion-number";
-import { Dispatch, SetStateAction, useState } from "react";
+import { Dispatch, SetStateAction, useMemo, useState } from "react";
 interface RangeProps {
   range: number[];
   setRange: Dispatch<SetStateAction<number[]>>;
@@ -45,6 +45,7 @@ export default function PriceRangeSlider({
           </svg>
         </button>
       </div>
+      {/* <RangeIndicator length={50} totalValue={range[1]}/> */}
       <Slider.Root
         className="relative flex items-center select-none touch-none w-full h-5"
         value={range}
@@ -58,13 +59,13 @@ export default function PriceRangeSlider({
           <Slider.Range className="absolute bg-[#111110] rounded-full h-full" />
         </Slider.Track>
         <Slider.Thumb
-          className="w-5 h-5 bg-black cursor-pointer flex items-center justify-center  shadow-lg rounded-full  focus:outline-none focus:ring-[#111110]"
+          className="w-4 h-4 bg-black cursor-pointer flex items-center justify-center  shadow-lg rounded-full  focus:outline-none focus:ring-[#111110]"
           aria-label="Minimum price"
         >
           <div className="w-2 h-2 rounded-full bg-white"></div>
         </Slider.Thumb>
         <Slider.Thumb
-          className="w-5 h-5 cursor-pointer bg-black flex items-center justify-center  shadow-lg rounded-full  focus:outline-none focus:ring-[#111110]"
+          className="w-4 h-4 cursor-pointer bg-black flex items-center justify-center  shadow-lg rounded-full  focus:outline-none focus:ring-[#111110]"
           aria-label="Maximum price"
         >
           <div className="w-2 h-2 rounded-full bg-white"></div>
@@ -76,9 +77,9 @@ export default function PriceRangeSlider({
             Minimum price
           </h6>
           <MotionNumber
-            format={{ minimumIntegerDigits:3, currency: "USD" }}
+            format={{ minimumIntegerDigits: 3, currency: "USD" }}
             value={`${range[0]}`}
-            className="text-[1.2rem] font-[600] text-black"
+            className="text-[1.1rem] font-[500] text-black"
           />
         </div>
         <div className="flex flex-col gap-1">
@@ -86,13 +87,43 @@ export default function PriceRangeSlider({
             Maximum price
           </h6>
           <MotionNumber
-            format={{minimumIntegerDigits: 4, currency: "USD" }}
+            format={{ minimumIntegerDigits: 4, currency: "USD" }}
             value={range[1]}
-            
-            className="text-[1.2rem] font-[600] text-black"
+            className="text-[1.1rem] font-[500] text-black"
           />
         </div>
       </div>
     </div>
   );
 }
+
+const RangeIndicator = ({
+  length,
+  totalValue,
+}: {
+  length: number;
+  totalValue: number;
+}) => {
+  const [currentTotal, setCurrentTotal] = useState(totalValue);
+  const divs = useMemo(() => {
+    const baseHeight = 10;
+    const heightIncrement = 1;
+    const valuePerDiv = totalValue / length;
+    const activeCount = Math.ceil(currentTotal / valuePerDiv);
+    return Array.from({ length: length }, (_, index) => ({
+      height: baseHeight + index * heightIncrement,
+      value: valuePerDiv,
+      isActive: index < activeCount,
+    }));
+  }, [currentTotal, length, totalValue]);
+
+  return (
+    <div className="flex gap-1 w-full items-end justify-end">
+      {divs.map((div, index) => (
+        <div key={index} style={{ height: div.height }} className="bg-black rounded-[6px] w-1">
+          
+        </div>
+      ))}
+    </div>
+  );
+};
