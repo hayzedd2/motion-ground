@@ -5,6 +5,11 @@ export const NavigationConfig = [
     date: "",
   },
   {
+    href: "/addguest",
+    title: "Add Guest",
+    date: "Sep 2024",
+  },
+  {
     href: "/pricefilter",
     title: "Price Filter",
     date: "Sep 2024",

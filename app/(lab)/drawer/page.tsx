@@ -73,7 +73,7 @@ const Drawer = () => {
               </svg>
             </button>
           </div>
-          <div className="relative  h-full flex flex-col gap-3 z-[-50]">
+          <div className="relative  h-full flex flex-col gap-3">
             {DrawerArr.map((drawerItem, index) => {
               return (
                 <div key={index} onClick={() => setSelectedDrawer(drawerItem)}>
