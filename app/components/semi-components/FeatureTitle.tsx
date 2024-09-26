@@ -2,12 +2,13 @@
 
 import { cn } from "@/lib/utils";
 import { useInView, motion } from "framer-motion";
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 
 interface titleProps {
   children: React.ReactNode;
 }
 export const FeatureTitle = ({ children }: titleProps) => {
+  const [activeIndex, setActiveIndex] = useState(1);
   const ref = useRef<HTMLParagraphElement>(null);
   const IsInView = useInView(ref, { margin: "-50% 0px -50% 0px" });
   const variants = {
@@ -30,11 +31,11 @@ export const FeatureTitle = ({ children }: titleProps) => {
       variants={variants}
       transition={{
         duration: 0.5,
-         ease: [0.34, 1.56, 0.64, 1],
+        ease: [0.34, 1.56, 0.64, 1],
         color: { duration: 0.4 },
       }}
       className={cn(
-        " sm:text-[1.3rem] xl:text-[1.7rem] font-[600] pb-14",
+        " sm:text-[1.3rem] xl:text-[1.5rem] font-[600] pb-14",
         IsInView ? "text-black" : "text-gray-300"
       )}
     >

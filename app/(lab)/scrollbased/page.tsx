@@ -24,7 +24,7 @@ const ScrollBasedInteraction = () => {
                 </ul>
             </div>
             <div className=" w-full basis-[50%] flex sticky top-0 items-center h-[400px]">
-                <div className={cn("w-full bg-red-800 h-[17rem]")}>
+                <div className={cn("w-full box-1 rounded-[10px] sm:h-[12rem] xl:h-[17rem]")}>
 
                 </div>
             </div>
