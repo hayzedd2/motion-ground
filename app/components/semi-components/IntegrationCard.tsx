@@ -9,7 +9,7 @@ const IntegrationCard = () => {
           <div>
             <h2 className="text-[1.1rem]">Firebase</h2>
             <p className="text-[0.7rem] font-[500] opacity-70">
-              Firebase is Google's mobile platform that helps you quickly
+              Firebase is Google&apos;s mobile platform that helps you quickly
               develop high-quality apps.
             </p>
           </div>
