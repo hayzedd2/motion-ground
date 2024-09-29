@@ -6,7 +6,7 @@ import ReminderCard from "@/app/components/semi-components/ReminderCard";
 import useOutsideClick from "@/lib/useClickOutside";
 
 const Flipcard = () => {
-  const [isFlipped, setIsFlipped] = useState(true);
+  const [isFlipped, setIsFlipped] = useState(false);
   const Reminders = [
     {
       id: 1,
@@ -52,7 +52,7 @@ const Flipcard = () => {
           className={`relative  transition-all  duration-700 ease-in-out  cursor-pointer
                   ${
                     isFlipped
-                      ? "w-64 h-[17rem] top-0"
+                      ? "w-[17rem] h-[17rem] top-0"
                       : "w-36 h-[9rem]  top-[-5rem]"
                   }`}
           style={{
@@ -91,7 +91,7 @@ const Flipcard = () => {
           </div>
           {/* BACK DIV */}
           <div
-            className={`absolute inset-0 shadow-md bg-[#1C1C1E] p-4 text-white rounded-[1.5rem]
+            className={`absolute inset-0 shadow-md bg-[#1C1C1E] p-5 text-white rounded-[1.5rem]
                     transition-all duration-700 ease-in-out
                     ${isFlipped ? "opacity-100" : "opacity-0"}`}
             style={{

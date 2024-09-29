@@ -13,13 +13,13 @@ const ReminderCard = ({ id, title, type, date }: ReminderProps) => {
   return (
     <div className="flex gap-2 items-start my-1">
       <div>
-        <input type="radio" name="" id="" />
+        <input type="checkbox" name="" id="" />
       </div>
       <div>
         <h2>{title}</h2>
         <p
           className={cn(
-            "text-[0.8rem] font-[600]",
+            "text-[0.7rem] font-[600]",
             type === "default" ? " opacity-50" : "text-[#FE4138] "
           )}
         >
