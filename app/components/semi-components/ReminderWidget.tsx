@@ -41,7 +41,7 @@ const ReminderWidget = ({ isFlipped, setIsFlipped }: FlipProps) => {
   const ref = useOutsideClick<HTMLDivElement>(handleOutsideClick);
   return (
     <div
-    //   ref={ref}
+      ref={ref}
       onClick={() => setIsFlipped(1)}
       className={`relative  transition-all  duration-700 ease-in-out  cursor-pointer
             ${
@@ -94,7 +94,7 @@ const ReminderWidget = ({ isFlipped, setIsFlipped }: FlipProps) => {
           transform: isFlipped == 1 ? "rotateY(0deg)" : "rotateY(-180deg)",
         }}
       >
-        <div className={`${isFlipped == 1 ? "opacity-100 delay-900" : "opacity-0"}`}>
+        <div className={`${isFlipped == 1 ? "opacity-100 delay-800" : "opacity-0"}`}>
           <div>
             <h3 className="text-[#FC9E14] text-[1.3rem] font-[600]">
               Reminders
