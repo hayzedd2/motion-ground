@@ -1,6 +1,8 @@
 "use client";
 
 import { cn } from "@/lib/utils";
+import { motion } from "framer-motion";
+import { useState } from "react";
 
 interface ReminderProps {
   id: number;
@@ -10,13 +12,46 @@ interface ReminderProps {
 }
 
 const ReminderCard = ({ id, title, type, date }: ReminderProps) => {
+  const [isChecked, setIsChecked] = useState(false);
+
+  const handleToggle = () => {
+    setIsChecked(!isChecked);
+  };
   return (
     <div className="flex gap-2 items-start my-1">
+      <label className="relative flex items-center cursor-pointer">
+        <input
+          type="checkbox"
+          className="sr-only"
+          checked={isChecked}
+          onChange={handleToggle}
+        />
+        <motion.div
+          initial={false}
+          animate={{
+            borderColor: isChecked ? "#FF9501" : "#D1D5DB",
+          }}
+          transition={{ duration: 0.2 }}
+          className="w-4 h-4 flex items-center justify-center border-2 rounded-full transition-colors duration-200 ease-in-out"
+        >
+          <motion.div
+            initial={false}
+            animate={{
+              scale: isChecked ? 1 : 0,
+              backgroundColor: "#FF9501",
+            }}
+            transition={{ duration: 0.2 }}
+            className=" w-2 h-2 rounded-full"
+          />
+        </motion.div>
+      </label>
       <div>
-        <input type="checkbox" name="" id="" />
-      </div>
-      <div>
-        <h2>{title}</h2>
+        <motion.h2
+          animate={{ textDecoration: isChecked ? "line-through" : "" }}
+          transition={{ duration : 0.8}}
+        >
+          {title}
+        </motion.h2>
         <p
           className={cn(
             "text-[0.7rem] font-[600]",
@@ -25,7 +60,7 @@ const ReminderCard = ({ id, title, type, date }: ReminderProps) => {
         >
           {date}
         </p>
-        {id !== 4 ? <DottedLine /> : null}
+        {/* {id !== 4 ? <DottedLine /> : null} */}
       </div>
     </div>
   );

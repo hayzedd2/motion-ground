@@ -47,25 +47,7 @@ const Modal = ({ items, onClick }: ModalProps) => {
     <>
       <AnimatePresence>
         {!!items && (
-          <motion.div
-            initial={{
-              WebkitBackdropFilter: "blur(0px)",
-              backdropFilter: "blur(0px)", // Set for non-Safari browsers
-            }}
-            animate={{
-              WebkitBackdropFilter: "blur(7px)", // Apply blur for Safari
-              backdropFilter: "blur(7px)", // Apply blur for other browsers
-            }}
-            exit={{
-              WebkitBackdropFilter: "blur(0px)",
-              backdropFilter: "blur(0px)",
-            }}
-            transition={{
-              duration: 0.3,
-              ease: "easeInOut",
-            }}
-            className="absolute  flex items-center justify-center"
-          >
+          <motion.div className="absolute  flex items-center justify-center">
             <motion.div layoutId={`itemIcon${items.id}`}></motion.div>
             <motion.div
               key={items.title}
