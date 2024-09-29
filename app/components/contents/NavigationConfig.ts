@@ -5,8 +5,8 @@ export const NavigationConfig = [
     date: "",
   },
   {
-    href: "/scrollbased",
-    title: "Scroll interaction",
+    href: "/flipcard",
+    title: "Flip interaction",
     date: "Sep 2024",
   },
   {

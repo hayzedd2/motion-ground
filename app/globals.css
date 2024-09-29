@@ -198,3 +198,18 @@
 .animation-container {
   @apply flex relative gap-2 px-3 bg-[#0B0B09] bx-shadow rounded-xl xl:min-w-[37.5rem]  xl:max-w-[400px] sm:w-full overflow-hidden items-center justify-center border-2 border-[hsla(0,0%,100%,.03)];
 }
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.transform-style-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
