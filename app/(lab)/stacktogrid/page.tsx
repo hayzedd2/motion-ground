@@ -64,9 +64,12 @@ const StackedImages = ({ imageState, setImageState }: imageStateProps) => {
               <motion.div
                 key={index}
                 layoutId={`imageholder-${index}`}
+                // animate={{
+                //   transform: `rotate(${image.tilt}) translateY(${index * 2}px)`,
+                //   transformOrigin: "bottom",
+                // }}
                 animate={{
-                  transform: `rotate(${image.tilt}) translateY(${index * 2}px)`,
-                  transformOrigin: "bottom",
+                  rotate : image.tilt
                 }}
                 style={{
                   backgroundRepeat: "no-repeat",
@@ -115,7 +118,9 @@ const GridImages = ({ imageState, setImageState }: imageStateProps) => {
                 key={index}
                 style={{
                   backgroundRepeat: "no-repeat",
+                  rotate : image.tilt
                 }}
+                
                 onClick={() => setImageState(index)}
                 layoutId={`imageholder-${index}`}
                 className="bg-white p-1  sm:w-28 sm:h-28 xl:w-32 xl:h-32"
@@ -147,6 +152,7 @@ const ModalImage = ({ imageState, setImageState }: imageStateProps) => {
             key={imageState}
             layoutId={`imageholder-${imageState}`}
             onClick={() => setImageState("grid")}
+            exit={{rotate : images[imageState].tilt}}
             style={{
               backgroundRepeat: "no-repeat",
             }}
