@@ -5,6 +5,11 @@ export const NavigationConfig = [
     date: "",
   },
   {
+    href: "/stacktogrid",
+    title: "Stack To Grid",
+    date: "Sep 2024",
+  },
+  {
     href: "/flipcard",
     title: "Flip interaction",
     date: "Sep 2024",
