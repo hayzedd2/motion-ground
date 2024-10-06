@@ -26,8 +26,9 @@ const LanguageSelector = () => {
   const [yPosition, setYPosition] = useState<number>(0);
   const [closestPoint, setClosestPoint] = useState<ClosestPoint>(null);
   const [positions, setPositions] = useState<number[]>([]);
-  const [shallowPositons, setShallowPositions]= useState<number[]>([]);
+  const [shallowPositons, setShallowPositions] = useState<number[]>([]);
   const [currentLangIndex, setCurrLangIndex] = useState(0);
+  const [exited, setExited] = useState(false);
   const divRef = useRef<HTMLDivElement>(null);
   const divRefs = [
     useRef<HTMLDivElement | null>(null),
@@ -40,6 +41,7 @@ const LanguageSelector = () => {
   const handleOutsideClick = () => {
     setIsExpanded(false);
     setIsLanguageMode(false);
+    setExited(true);
   };
 
   const ref = useOutsideClick<HTMLDivElement>(handleOutsideClick);
@@ -52,7 +54,13 @@ const LanguageSelector = () => {
         const yPos = this.pointerY + window.scrollY;
         console.log("Current Y position", yPos);
         setYPosition(yPos);
+        // const draggableElement = this.target;
+        // draggableElement.style.top = `${this.pointerY + window.scrollY}px`;
       },
+    //   onDrag: function (this: Draggable) {
+    //     const draggableElement = this.target;
+    //     draggableElement.style.top = `${this.pointerY + window.scrollY}px`;
+    //   },
     });
   }
   const calcClosestPoint = ({ positions, yPosition }: calcClosestPointProp) => {
@@ -92,7 +100,7 @@ const LanguageSelector = () => {
     });
   };
   useEffect(() => {
-    getYPositions(); 
+    getYPositions();
   }, [languageMode]);
 
   useEffect(() => {
@@ -165,13 +173,12 @@ const LanguageSelector = () => {
                     />
                   </>
                 ) : (
-                  <div className="mb-[-30px] dragbounds  items-center justify-end flex-col flex gap-8">
+                  <div className="mb-[-30px] relative dragbounds  items-center justify-end flex-col flex gap-8">
                     <div
-                      className="w-6 draggable h-6 bx-shadow bg-white rounded-full z-20 absolute  flex items-center justify-center"
+                      className={`absolute w-8 draggable h-8 bx-shadow bg-white rounded-full z-20   flex items-center justify-center`}
                     >
-                      <CgSelectR className="text-[0.8rem] " />
+                      <CgSelectR className="text-[0.8rem]" />
                     </div>
-
                     {programmingLanguages.map((lang) => {
                       return (
                         <div
