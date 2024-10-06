@@ -5,6 +5,11 @@ export const NavigationConfig = [
     date: "",
   },
   {
+    href: "/languageselector",
+    title: "Language selector",
+    date: "Oct 2024",
+  },
+  {
     href: "/stacktogrid",
     title: "Stack To Grid",
     date: "Sep 2024",

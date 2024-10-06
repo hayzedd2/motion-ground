@@ -33,27 +33,31 @@ const PlaygroundItem = () => {
       <div className="flex items-center xl:ml-[-60px] ">
         <div className="-rotate-90 sm:hidden xl:flex items-center justify-center gap-2 opacity-70">
           <p>Scroll</p>
-          <FaArrowRightLong/>
+          <FaArrowRightLong />
         </div>
-        <div className="flex flex-col gap-2 w-full h-[28rem] overflow-scroll scroll-container">
+        <div>
           <div>
-            <p className="font-[500] text-[1.2rem]">Components</p>
+            <p className="font-[500] text-[1.2rem] mb-3d">
+              Components ({NavigationConfig.length})
+            </p>
           </div>
-          {NavigationConfig.filter((nav) => nav.title !== "Home").map(
-            (nav, index) => (
-              <Link
-                href={nav.href}
-                key={index}
-                className="xl:text-[1.05rem] sm:[text-0.95rem] flex w-full gap-3 justify-between items-center opacity-70 py-3"
-              >
-                <h5 className="basis-[35%]">{nav.title}</h5>
-                <DottedLine />
-                <h5 className="xl:basis-[25%] sm:basis[35%] text-right">
-                  {nav.date}
-                </h5>
-              </Link>
-            )
-          )}
+          <div className="flex flex-col gap-2 w-full h-[28rem] overflow-scroll scroll-container">
+            {NavigationConfig.filter((nav) => nav.title !== "Home").map(
+              (nav, index) => (
+                <Link
+                  href={nav.href}
+                  key={index}
+                  className="xl:text-[1.05rem] sm:[text-0.95rem] flex w-full gap-3 justify-between items-center opacity-70 py-3"
+                >
+                  <h5 className="basis-[35%]">{nav.title}</h5>
+                  <DottedLine />
+                  <h5 className="xl:basis-[25%] sm:basis[35%] text-right">
+                    {nav.date}
+                  </h5>
+                </Link>
+              )
+            )}
+          </div>
         </div>
       </div>
     </div>
