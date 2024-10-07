@@ -26,9 +26,7 @@ const LanguageSelector = () => {
   const [yPosition, setYPosition] = useState<number>(0);
   const [closestPoint, setClosestPoint] = useState<ClosestPoint>(null);
   const [positions, setPositions] = useState<number[]>([]);
-  const [shallowPositons, setShallowPositions] = useState<number[]>([]);
   const [currentLangIndex, setCurrLangIndex] = useState(0);
-  const [exited, setExited] = useState(false);
   const divRef = useRef<HTMLDivElement>(null);
   const divRefs = [
     useRef<HTMLDivElement | null>(null),
@@ -41,7 +39,6 @@ const LanguageSelector = () => {
   const handleOutsideClick = () => {
     setIsExpanded(false);
     setIsLanguageMode(false);
-    setExited(true);
   };
 
   const ref = useOutsideClick<HTMLDivElement>(handleOutsideClick);
@@ -52,15 +49,10 @@ const LanguageSelector = () => {
       inertia: true,
       onDragEnd: function (this: Draggable) {
         const yPos = this.pointerY + window.scrollY;
-        console.log("Current Y position", yPos);
+        const currentY = this.y;
+        gsap.set(this.target, { y: currentY });
         setYPosition(yPos);
-        // const draggableElement = this.target;
-        // draggableElement.style.top = `${this.pointerY + window.scrollY}px`;
       },
-    //   onDrag: function (this: Draggable) {
-    //     const draggableElement = this.target;
-    //     draggableElement.style.top = `${this.pointerY + window.scrollY}px`;
-    //   },
     });
   }
   const calcClosestPoint = ({ positions, yPosition }: calcClosestPointProp) => {
@@ -175,6 +167,7 @@ const LanguageSelector = () => {
                 ) : (
                   <div className="mb-[-30px] relative dragbounds  items-center justify-end flex-col flex gap-8">
                     <div
+                        
                       className={`absolute w-8 draggable h-8 bx-shadow bg-white rounded-full z-20   flex items-center justify-center`}
                     >
                       <CgSelectR className="text-[0.8rem]" />
