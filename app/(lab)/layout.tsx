@@ -6,40 +6,33 @@ import { usePathname } from "next/navigation";
 import { Navigation } from "../components/semi-components/ComponentCards";
 import { Analytics } from "@vercel/analytics/react";
 import Link from "next/link";
-import { MdNavigateBefore } from "react-icons/md";
-import { GrHomeOption } from "react-icons/gr";
 import { RiHomeOfficeLine } from "react-icons/ri";
 interface LabLayoutProps {
   children: React.ReactNode;
 }
-const ProtectedLayout = ({ children }: LabLayoutProps) => {
+const PageLayout = ({ children }: LabLayoutProps) => {
   const pageVariants = {
     initial: {
       clipPath: "inset(0% 0% 0% 0%)",
-       // Starts with full clipping (bottom)
-      filter: "blur(2px)", // Initial blur
     },
     in: {
-      clipPath: "inset(0% 100% 0% 0%)",
-       // Full view, no clipping
-      filter: "blur(0px)", // Remove blur
+      clipPath: "inset(0% 0% 0% 100%)",
     },
     exit: {
-      clipPath: "inset(0% 0% 0% 0%)", // Clips again on exit (bottom to top)
+      clipPath: "inset(0% 0% 0% 0%)",
     },
   };
   const pageTransition = {
     type: "tween",
     ease: [0.34, 1.56, 0.64, 1],
-    duration: 2.5,
+    duration: 2,
   };
   const pathname = usePathname();
   return (
-    <motion.main
+    <main
       className="min-h-screen flex relative bg-[rgb(17,17,16)] items-center"
-      layout
     >
-      <AnimatePresence mode="wait">
+      {/* <AnimatePresence mode="wait"> */}
         <motion.div
           key={pathname}
           initial="initial"
@@ -62,10 +55,10 @@ const ProtectedLayout = ({ children }: LabLayoutProps) => {
             <Navigation />
           </div>
         </div>
-      </AnimatePresence>
+      {/* </AnimatePresence> */}
       <Analytics />
-    </motion.main>
+    </main>
   );
 };
 
-export default ProtectedLayout;
+export default PageLayout;
