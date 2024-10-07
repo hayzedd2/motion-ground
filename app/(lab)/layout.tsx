@@ -15,27 +15,28 @@ interface LabLayoutProps {
 const ProtectedLayout = ({ children }: LabLayoutProps) => {
   const pageVariants = {
     initial: {
-      opacity: 0,
-      filter: "blur(2px)",
+      clipPath: "inset(0% 0% 0% 0%)",
+       // Starts with full clipping (bottom)
+      filter: "blur(2px)", // Initial blur
     },
     in: {
-      opacity: 1,
-      filter: "blur(0px)",
+      clipPath: "inset(0% 100% 0% 0%)",
+       // Full view, no clipping
+      filter: "blur(0px)", // Remove blur
     },
-    exit :{
-      opacity : 0
-    }
-
+    exit: {
+      clipPath: "inset(0% 0% 0% 0%)", // Clips again on exit (bottom to top)
+    },
   };
   const pageTransition = {
     type: "tween",
     ease: [0.34, 1.56, 0.64, 1],
-    duration: 2,
+    duration: 2.5,
   };
   const pathname = usePathname();
   return (
     <motion.main
-      className="min-h-screen flex bg-[rgb(17,17,16)] items-center"
+      className="min-h-screen flex relative bg-[rgb(17,17,16)] items-center"
       layout
     >
       <AnimatePresence mode="wait">
@@ -46,16 +47,23 @@ const ProtectedLayout = ({ children }: LabLayoutProps) => {
           exit="out"
           variants={pageVariants}
           transition={pageTransition}
-          className="max-w-[40rem] w-full  text-[#d1d1cb] mx-auto"
-        >
-          <Link href={'/'} className="flex gap-[0.35rem]  items-center mb-7 px-4"><RiHomeOfficeLine/>Home</Link>
+          className="h-screen absolute top-0 z-50 bg-[black] w-full"
+        ></motion.div>
+        <div className="max-w-[40rem] w-full  text-[#d1d1cb] mx-auto">
+          <Link
+            href={"/"}
+            className="flex gap-[0.35rem]  items-center mb-7 px-4"
+          >
+            <RiHomeOfficeLine />
+            Home
+          </Link>
           <div className="">{children}</div>
           <div className="w-full">
             <Navigation />
           </div>
-        </motion.div>
+        </div>
       </AnimatePresence>
-      <Analytics/>
+      <Analytics />
     </motion.main>
   );
 };
