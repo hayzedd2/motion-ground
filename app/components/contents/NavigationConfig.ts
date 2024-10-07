@@ -4,11 +4,11 @@ export const NavigationConfig = [
     title: "Home",
     date: "",
   },
-  {
-    href: "/languageselector",
-    title: "Language selector",
-    date: "Oct 2024",
-  },
+  // {
+  //   href: "/languageselector",
+  //   title: "Language selector",
+  //   date: "Oct 2024",
+  // },
   {
     href: "/stacktogrid",
     title: "Stack To Grid",
