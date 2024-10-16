@@ -13,14 +13,17 @@ interface LabLayoutProps {
 const PageLayout = ({ children }: LabLayoutProps) => {
   const pageVariants = {
     initial: {
-      clipPath: "inset(0% 0% 0% 0%)",
+      filter: "blur(10px)",
+      opacity: 0
     },
     in: {
-      clipPath: "inset(0% 0% 0% 100%)",
+      filter: "blur(0px)",
+      opacity: 1
     },
     exit: {
-      clipPath: "inset(0% 0% 0% 0%)",
-    },
+      filter: "blur(10px)",
+      opacity: 0
+    }
   };
   const pageTransition = {
     type: "tween",
@@ -40,8 +43,8 @@ const PageLayout = ({ children }: LabLayoutProps) => {
           exit="out"
           variants={pageVariants}
           transition={pageTransition}
-          className="h-screen absolute top-0 z-50 bg-[black] w-full"
-        ></motion.div>
+          className="max-w-[40rem] mx-auto w-full"
+        >
         <div className="max-w-[40rem] w-full  text-[#d1d1cb] mx-auto">
           <Link
             href={"/"}
@@ -55,6 +58,7 @@ const PageLayout = ({ children }: LabLayoutProps) => {
             <Navigation />
           </div>
         </div>
+        </motion.div>
       {/* </AnimatePresence> */}
       <Analytics />
     </main>

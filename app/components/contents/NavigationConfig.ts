@@ -29,11 +29,11 @@ export const NavigationConfig = [
     title: "Price Filter",
     date: "Sep 2024",
   },
-  {
-    href: "/hoverinteraction",
-    title: "Hover Interaction",
-    date: "Sep 2024",
-  },
+  // {
+  //   href: "/hoverinteraction",
+  //   title: "Hover Interaction",
+  //   date: "Sep 2024",
+  // },
   {
     href: "/portfoliowidget",
     title: "Portfolio Widget",
