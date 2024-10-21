@@ -4,6 +4,11 @@ export const NavigationConfig = [
     title: "Home",
     date: "",
   },
+  {
+    href: "/toolbarv2",
+    title: "Toolbar v2",
+    date: "Oct 2024",
+  },
   // {
   //   href: "/languageselector",
   //   title: "Language selector",
@@ -12,7 +17,7 @@ export const NavigationConfig = [
   {
     href: "/stacktogrid",
     title: "Stack To Grid",
-    date: "Sep 2024",
+    date: "Oct 2024",
   },
   {
     href: "/flipcard",
@@ -59,12 +64,6 @@ export const NavigationConfig = [
   {
     href: "/filter",
     title: "Filter",
-    date: "Aug 2024",
-  },
-
-  {
-    href: "/toolbar",
-    title: "Toolbar",
     date: "Aug 2024",
   },
 

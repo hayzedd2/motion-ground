@@ -3,7 +3,7 @@ import { Newsreader } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/react";
 import { Toaster } from "sonner";
-const newsReader = Newsreader({ subsets: ["latin"]});
+const newsReader = Newsreader({ subsets: ["latin"], display : "swap"});
 
 export const metadata: Metadata = {
   title: "Playground",

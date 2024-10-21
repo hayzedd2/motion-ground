@@ -5,13 +5,15 @@ import { ToolbarArr } from "@/app/components/contents/ToolbarContents";
 import { motion } from "framer-motion";
 import { HiOutlineMenu } from "react-icons/hi";
 import { ToolBarProp } from "@/app/components/type";
+import useOutsideClick from "@/lib/useClickOutside";
 
 const Toolbar = () => {
   const [tool, setSelectedTool] = useState<ToolBarProp | null>(null);
   const [activeStyles, setActiveStyles] = useState({});
-  const [contentHeight, setContentHeight] = useState<number>(0);
+  const [heights, setHeights] = useState<number[]>([]);
   const listRef = useRef<HTMLUListElement>(null);
-  const contentRef = useRef<HTMLDivElement>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
+
   useEffect(() => {
     if (listRef.current && tool) {
       const activeItem = listRef.current.querySelector(
@@ -25,14 +27,19 @@ const Toolbar = () => {
         });
       }
     }
-  }, [tool]);
-  useLayoutEffect(() => {
-    if (contentRef.current) {
-      const newHeight = contentRef.current.scrollHeight;
-      setContentHeight(newHeight);
-      console.log(newHeight);
+    if (containerRef.current) {
+      const newHeights = Array.from(containerRef.current.children).map(
+        (child) => (child as HTMLElement).offsetHeight
+      );
+      setHeights(newHeights);
     }
   }, [tool]);
+  const handleOutsideClick = () => {
+    setSelectedTool(null);
+    setActiveStyles({})
+  };
+
+  const ref = useOutsideClick<HTMLDivElement>(handleOutsideClick);
   return (
     <section className="flex flex-col items-center">
       <AboutText />
@@ -40,26 +47,44 @@ const Toolbar = () => {
         className="min-h-[450px] max-h-[450px] pb-4 animation-container"
         style={{
           alignItems: "end",
+          backgroundColor : "white"
         }}
-        // onClick={() => setSelectedTool(null)}
       >
-        <motion.div className="overflow-hidden py-3 w-[25rem] justify-center bg-[#1A1A1A] flex items-center flex-col  bx-shadow rounded-2xl">
-          <motion.div
-            className="w-full px-3 overflow-hidden"
-            animate={{
-              height: !tool ? 0 : contentHeight,
-            }}
-            transition={{
-              duration: 0.35,
-              ease: "easeInOut",
-            }}
-          >
-            <div ref={contentRef}>{tool ? tool.content : null}</div>
-          </motion.div>
+        <motion.div ref={ref} className="overflow-hidden w-[25rem] bg-[#1A1A1A]  flex flex-col  bx-shadow rounded-2xl">
+          {tool && (
+            <motion.div
+              ref={containerRef}
+              initial={{
+                height: 0,
+              }}
+              animate={{
+                height: tool ? heights[tool.id]: 0,
+              }}
+              className="flex w-full items-end mt-3"
+              transition={{
+                duration: 0.35,
+                ease: "easeInOut",
+              }}
+            >
+              {ToolbarArr.map((currTool, i) => (
+                <motion.div
+                  animate={{
+                    translateX: `-${tool && tool.id * 100}%`,
+                  }}
+                  transition={{
+                    duration: 0.35,
+                    ease: "easeInOut",
+                  }}
+                  key={i}
+                  className="w-full  px-3 shrink-0"
+                >
+                  {currTool.content}
+                </motion.div>
+              ))}
+            </motion.div>
+          )}
           <div
-            className={`flex gap-2 items-center sm:max-w-[20rem] xl:max-w-[23rem] mx-auto ${
-              tool ? "mt-4" : ""
-            }`}
+            className={`flex gap-2 items-center  sm:max-w-[22rem] py-3 xl:max-w-[23rem] mx-auto `}
           >
             <ul
               className="flex relative overflow-scroll scroll-container"

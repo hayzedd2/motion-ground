@@ -5,22 +5,22 @@ import ShareWorkspace from "../semi-components/ShareWorkspace";
 
 export const ToolbarArr = [
   {
-    id: 1,
+    id: 0,
     name: "Project",
     content: <ProjectCard />,
   },
   {
-    id: 2,
+    id: 1,
     name: "Deployments",
     content: <DeploymentCard />,
   },
   {
-    id: 3,
+    id: 2,
     name: "Create API key",
     content: <CreateKey/>
   },
   {
-    id: 4,
+    id: 3,
     name: "Share Workspace",
     content: <ShareWorkspace/>
   },
