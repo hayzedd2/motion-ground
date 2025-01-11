@@ -33,10 +33,20 @@ const Toolbar = () => {
       );
       setHeights(newHeights);
     }
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setSelectedTool(null);
+        setActiveStyles({});
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
   }, [tool]);
   const handleOutsideClick = () => {
     setSelectedTool(null);
-    setActiveStyles({})
+    setActiveStyles({});
   };
 
   const ref = useOutsideClick<HTMLDivElement>(handleOutsideClick);
@@ -47,10 +57,13 @@ const Toolbar = () => {
         className="min-h-[450px] max-h-[450px] pb-4 animation-container"
         style={{
           alignItems: "end",
-          backgroundColor : "white"
+          backgroundColor: "white",
         }}
       >
-        <motion.div ref={ref} className="overflow-hidden w-[25rem] bg-[#1A1A1A]  flex flex-col  bx-shadow rounded-2xl">
+        <motion.div
+          ref={ref}
+          className="overflow-hidden w-[25rem] bg-[#1A1A1A]  flex flex-col  bx-shadow rounded-2xl"
+        >
           {tool && (
             <motion.div
               ref={containerRef}
@@ -58,7 +71,7 @@ const Toolbar = () => {
                 height: 0,
               }}
               animate={{
-                height: tool ? heights[tool.id]: 0,
+                height: tool ? heights[tool.id] : 0,
               }}
               className="flex w-full items-end mt-3"
               transition={{

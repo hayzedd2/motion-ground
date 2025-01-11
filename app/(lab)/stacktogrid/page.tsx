@@ -9,6 +9,7 @@ import nature6 from "../../image/nature6.jpg";
 import { AnimatePresence, motion } from "framer-motion";
 import { Dispatch, SetStateAction, useState } from "react";
 import useOutsideClick from "@/lib/useClickOutside";
+import { useKeys } from "@/lib/useKeys";
 const images = [
   { src: nature4, tilt: "0" },
   { src: nature3, tilt: "-5eg" },
@@ -18,15 +19,18 @@ const images = [
   { src: nature1, tilt: "-20deg" },
 ];
 
-// const containerVariants = {
-//     stack: { transition: { staggerChildren: 0.05, staggerDirection: -1 } },
-//     grid: { transition: { staggerChildren: 0.05, delayChildren: 0.2 } }
-// }
-
 const StackToGrid = () => {
   const [imageState, setImageState] = useState<"stacked" | "grid" | number>(
     "stacked"
   );
+  useKeys({
+    keys: ["Escape"],
+    // if individual key is true, callback would be triggered if even only one of the keys in the array is pressed
+    // triggerOnAnyKey: true,
+    callback: (e) => {
+      setImageState("grid")
+    },
+  });
   return (
     <div className="flex flex-col items-center">
       <div
@@ -111,13 +115,13 @@ const GridImages = ({ imageState, setImageState }: imageStateProps) => {
           ref={ref}
           layoutId="imagecontainer"
           initial={{
-            opacity : 0
+            opacity: 0,
           }}
           animate={{
-            opacity : 1
+            opacity: 1,
           }}
           transition={{
-            staggerChildren : 0.5
+            staggerChildren: 0.5,
           }}
           className="max-w-[420px]  mx-auto xl:gap-5 sm:gap-3 grid grid-cols-3  cursor-pointer"
         >
@@ -129,7 +133,6 @@ const GridImages = ({ imageState, setImageState }: imageStateProps) => {
                   backgroundRepeat: "no-repeat",
                   rotate: image.tilt,
                 }}
-
                 onClick={() => setImageState(index)}
                 layoutId={`imageholder-${index}`}
                 className="bg-white p-1  sm:w-28 sm:h-28 xl:w-32 xl:h-32"

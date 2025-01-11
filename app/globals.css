@@ -181,6 +181,9 @@
     0px 0px 1px 0px rgba(0, 0, 0, 0.5);
 }
 
+.controller{
+  clip-path: polygon(50% 0, 0% 100%, 100% 100%);
+}
 .loading-spinners_rotateFast__a3gT9 {
   animation: rotate-fast 0.55s linear infinite;
 }
