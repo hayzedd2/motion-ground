@@ -10,8 +10,11 @@ type Key =
   | "End"
   | "PageUp"
   | "PageDown"
-
-  | "Alt" | "AltGraph" | "Control" | "Meta" | "Shift"
+  | "Alt"
+  | "AltGraph"
+  | "Control"
+  | "Meta"
+  | "Shift"
 
   // Function keys
   | "F1"
@@ -130,69 +133,105 @@ type Key =
   | "/"
   | "?";
 
-interface useKeysProp {
+export type KeyModifier = "Control" | "Alt" | "Shift" | "Meta";
+interface useKeysCommand {
   keys: Key[];
   callback: (e: KeyboardEvent) => void;
   triggerOnAnyKey?: boolean;
+  modifiers?: Partial<Record<KeyModifier, boolean>>;
+  preventDefault?: boolean;
+  enableKeyRepeatOnHold?: boolean;
 }
 
-interface useKeysProp {
-  keys: Key[];
-  callback: (e: KeyboardEvent) => void;
+class LowercaseSet extends Set<string> {
+  add(value: string) {
+    return super.add(value.toLowerCase());
+  }
+  delete(value: string) {
+    return super.delete(value.toLowerCase());
+  }
+  has(value: string) {
+    return super.has(value.toLowerCase());
+  }
 }
 
-export const useKeys = ({
-  keys,
-  callback,
-//   modifiers = {},
-triggerOnAnyKey,
-}: useKeysProp) => {
-  // Memoized the keys Set to avoid recreating it on every render
-  const keysArray = useMemo(() => Array.from(new Set(keys)), [keys]);
+const checkModifiers = (
+  pressedKeys: Set<string>,
+  modifiers?: Partial<Record<KeyModifier, boolean>>
+): boolean => {
+  if (!modifiers || Object.keys(modifiers).length === 0) {
+    return true;
+  }
+  return Object.entries(modifiers).every(
+    ([modifier, required]) => required === pressedKeys.has(modifier as Key)
+  );
+};
 
-  // Memoized the callback to prevent unnecessary effect triggers
-  const memoizedCallback = useCallback(callback, [callback]);
+const checkKeys = (
+  pressedKeys: Set<string>,
+  keySet: Set<string>,
+  triggerOnAnyKey = false
+): boolean => {
+  if (triggerOnAnyKey) {
+    return Array.from(keySet).some((key) => pressedKeys.has(key));
+  }
+  return Array.from(keySet).every((key) => pressedKeys.has(key));
+};
+export const useKeys = (...commands: useKeysCommand[]) => {
+  if (commands.some((cmd) => cmd.keys.length === 0)) {
+    throw new Error("Empty keys array is not allowed");
+  }
+  const keySets = useMemo(
+    () => commands.map((command) => new LowercaseSet(command.keys)),
+    [commands]
+  );
+  const commandCallbacks = useMemo(
+    () => commands.map((command) => command.callback),
+    [commands]
+  );
 
-  //to track all pressed keys
-  const pressedKeys = useRef<Set<string>>(new Set());
+  const pressedKeys = useRef<Set<string>>(new LowercaseSet());
+
+  const handleKeyDown = (e: KeyboardEvent) => {
+    for (let i = 0; i < commands.length; i++) {
+      const command = commands[i];
+      const keySet = keySets[i];
+      const allowRepeat = command.enableKeyRepeatOnHold ?? false;
+      if (command.preventDefault && keySet.has(e.key as Key)) {
+        e.preventDefault();
+      }
+      if (!pressedKeys.current.has(e.key)) {
+        // First press - always add the key
+        pressedKeys.current.add(e.key);
+      } else if (!allowRepeat) {
+        return;
+      }
+
+      if (!checkModifiers(pressedKeys.current, command.modifiers)) continue;
+      if (!checkKeys(pressedKeys.current, keySet, command.triggerOnAnyKey))
+        continue;
+      commandCallbacks[i](e);
+    }
+  };
+
+  const handleKeyUp = (e: KeyboardEvent) => {
+    pressedKeys.current.delete(e.key);
+  };
+
+  const handleBlur = () => {
+    pressedKeys.current.clear();
+  };
 
   useEffect(() => {
-    // check if all keys are pressed
-    const checkKeys = (e: KeyboardEvent) => {
-      if (triggerOnAnyKey) {
-        // If individualKey is true, only the key that matches the event key should be in the pressed keys
-        return keysArray.some((key) => pressedKeys.current.has(key));
-      }
-      // If individualKey is false, all keys should be pressed
-      return (
-        keysArray.every((key) => pressedKeys.current.has(key))
-      );
-    };
-
-    const handleKeyDown = (e: KeyboardEvent) => {
-      // Only process if this key isn't already pressed (prevents repeat events)
-      if (!pressedKeys.current.has(e.key)) {
-        pressedKeys.current.add(e.key);
-        console.log(pressedKeys.current)
-        if (checkKeys(e)) {
-          memoizedCallback(e);
-        }
-      }
-    };
-    
-
-    const handleKeyUp = (e: KeyboardEvent) => {
-      pressedKeys.current.delete(e.key);
-    };
-
     window.addEventListener("keydown", handleKeyDown);
     window.addEventListener("keyup", handleKeyUp);
+    window.addEventListener("blur", handleBlur);
 
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
       window.removeEventListener("keyup", handleKeyUp);
-      // Clear pressed keys on cleanup to prevent memory leaks
+      window.removeEventListener("blur", handleBlur);
       pressedKeys.current.clear();
     };
-  }, [keysArray, memoizedCallback]);
+  }, [handleKeyDown, handleKeyUp, handleBlur]);
 };

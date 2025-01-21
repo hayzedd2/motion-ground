@@ -9,7 +9,7 @@ import nature6 from "../../image/nature6.jpg";
 import { AnimatePresence, motion } from "framer-motion";
 import { Dispatch, SetStateAction, useState } from "react";
 import useOutsideClick from "@/lib/useClickOutside";
-import { useKeys } from "@/lib/useKeys";
+import { useKeys } from "use-keys-bindings";
 const images = [
   { src: nature4, tilt: "0" },
   { src: nature3, tilt: "-5eg" },
@@ -23,14 +23,16 @@ const StackToGrid = () => {
   const [imageState, setImageState] = useState<"stacked" | "grid" | number>(
     "stacked"
   );
+
   useKeys({
-    keys: ["Escape"],
-    // if individual key is true, callback would be triggered if even only one of the keys in the array is pressed
-    // triggerOnAnyKey: true,
+    keys: ["s"],
     callback: (e) => {
-      setImageState("grid")
+      console.log(e.repeat);
+      console.log("movveeee");
     },
+    enableKeyRepeatOnHold: true,
   });
+
   return (
     <div className="flex flex-col items-center">
       <div

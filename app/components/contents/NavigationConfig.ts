@@ -5,15 +5,15 @@ export const NavigationConfig = [
     date: "",
   },
   {
+    href: "/music",
+    title: "Music player",
+    date: "Jan 2025",
+  },
+  {
     href: "/toolbarv2",
     title: "Toolbar v2",
     date: "Oct 2024",
   },
-  // {
-  //   href: "/languageselector",
-  //   title: "Language selector",
-  //   date: "Oct 2024",
-  // },
   {
     href: "/stacktogrid",
     title: "Stack To Grid",
@@ -34,11 +34,7 @@ export const NavigationConfig = [
     title: "Price Filter",
     date: "Sep 2024",
   },
-  // {
-  //   href: "/hoverinteraction",
-  //   title: "Hover Interaction",
-  //   date: "Sep 2024",
-  // },
+
   {
     href: "/portfoliowidget",
     title: "Portfolio Widget",
