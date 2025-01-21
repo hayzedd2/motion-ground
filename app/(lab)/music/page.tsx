@@ -1,13 +1,13 @@
 "use client";
-import React from "react";
+import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { IoPause, IoPlay, IoPlayBack, IoPlayForward } from "react-icons/io5";
 
 type musicState = "default" | "expanded" | "details";
 
-const page = () => {
-  const [musicState, setMusicState] = React.useState<musicState>("default");
-  const [isPaused, setIsPaused] = React.useState(false);
+const Page = () => {
+  const [musicState, setMusicState] = useState<musicState>("default");
+  const [isPaused, setIsPaused] = useState(false);
   return (
     <section className="flex flex-col items-center">
       <div className="min-h-[400px] max-h-[400px] animation-container">
@@ -233,4 +233,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;
