@@ -5,6 +5,11 @@ export const NavigationConfig = [
     date: "",
   },
   {
+    href: "/browser-tab",
+    title: "Browser tabs",
+    date: "Mar 2025",
+  },
+  {
     href: "/music",
     title: "Music player",
     date: "Jan 2025",
