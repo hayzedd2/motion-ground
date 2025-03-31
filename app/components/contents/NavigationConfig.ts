@@ -4,11 +4,11 @@ export const NavigationConfig = [
     title: "Home",
     date: "",
   },
-  {
-    href: "/browser-tab",
-    title: "Browser tabs",
-    date: "Mar 2025",
-  },
+  // {
+  //   href: "/browser-tab",
+  //   title: "Browser tabs",
+  //   date: "Mar 2025",
+  // },
   {
     href: "/music",
     title: "Music player",
