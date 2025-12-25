@@ -1,6 +1,4 @@
 import React, { Dispatch, SetStateAction } from "react";
-import ReminderCard from "@/app/components/semi-components/ReminderCard";
-import { IoList } from "react-icons/io5";
 import useOutsideClick from "@/lib/useClickOutside";
 import { LuUnplug } from "react-icons/lu";
 import IntegrationCard from "./IntegrationCard";

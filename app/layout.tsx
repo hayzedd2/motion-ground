@@ -3,7 +3,8 @@ import { Newsreader } from "next/font/google";
 import "./globals.css";
 import { Analytics } from "@vercel/analytics/react";
 import { Toaster } from "sonner";
-const newsReader = Newsreader({subsets:["latin"], display:"swap"})
+
+const pt_serif = Newsreader({subsets : ["latin"]})
 
 export const metadata: Metadata = {
   title: "Playground",
@@ -17,7 +18,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={newsReader.className}>
+      <body className={`${pt_serif.className} antialiased`}>
         {children}
       </body>
       <Analytics />

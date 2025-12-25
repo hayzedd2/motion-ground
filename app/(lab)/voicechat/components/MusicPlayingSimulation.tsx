@@ -1,7 +1,6 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import { motion } from "framer-motion";
 
-const MusicPlayingSimulation = () => {
+export const MusicPlayingSimulation = () => {
   const bars = [
     { initialHeight: 12, animateHeight: 5 },
     { initialHeight: 5, animateHeight: 10 },
@@ -17,12 +16,14 @@ const MusicPlayingSimulation = () => {
           key={index}
           className="bg-white w-[0.125rem] rounded-md"
           initial={{ height: bar.initialHeight }}
-          animate={{ height: [bar.initialHeight, bar.animateHeight, bar.initialHeight] }}
+          animate={{
+            height: [bar.initialHeight, bar.animateHeight, bar.initialHeight],
+          }}
           transition={{
             repeat: Infinity,
             duration: 0.6,
             ease: "easeInOut",
-            delay: index * 0.1
+            delay: index * 0.1,
           }}
         />
       ))}
@@ -30,4 +31,3 @@ const MusicPlayingSimulation = () => {
   );
 };
 
-export default MusicPlayingSimulation;

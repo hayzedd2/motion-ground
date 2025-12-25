@@ -1,10 +1,7 @@
-"use client"
+import { FilterProp } from "../../../components/type";
 
-import React, { useState } from "react";
-import { FilterProp } from "../type";
-
-const FilterBadge = ({ name, svg, color }: FilterProp) => {
-   
+export const FilterBadge = ({ name, svg, color }: FilterProp) => {
+  
   return (
     <div className="rounded-lg bx-shadow bg-inherit px-[0.5rem] py-1 flex gap-2 cursor-pointer items-center">
       <div
@@ -19,5 +16,3 @@ const FilterBadge = ({ name, svg, color }: FilterProp) => {
     </div>
   );
 };
-
-export default FilterBadge;

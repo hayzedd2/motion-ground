@@ -1,6 +1,6 @@
-import React, { Dispatch, SetStateAction, useState } from "react";
+import { Dispatch, SetStateAction } from "react";
 import { IoList } from "react-icons/io5";
-import ReminderCard from "@/app/components/semi-components/ReminderCard";
+import ReminderCard from "./ReminderCard";
 import useOutsideClick from "@/lib/useClickOutside";
 
 interface FlipProps {
