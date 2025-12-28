@@ -13,8 +13,8 @@ export const Album = () => {
   };
   
   return (
-    <div className="animation-container image-grid">
-      <div className="w-full relative grid-cols-3 sm:gap-2 xl:gap-3 max-w-[400px] grid">
+    <div className="w-full flex items-center gap-2">
+      <div className="w-full max-w-[400px] mx-auto relative grid-cols-3 sm:gap-2 xl:gap-3  grid">
         {AlbumArr.map((pic) => {
           return (
             <SingleImg

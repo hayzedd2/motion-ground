@@ -19,7 +19,7 @@ export const AboutMe = () => {
         </div>
       </div>
 
-      <p className="mt-2 text-[15px] leading-6 font-normal">
+      <p className="mt-2  leading-6 font-normal">
         Hi there. Welcome to my little sandbox! I love recreating and
         reimagining cool web interactions I come across, just for the joy of
         learning and experimenting. I call it motion-ground :)
