@@ -26,7 +26,7 @@ export const AboutMe = () => {
       </p>
      <div className="flex justify-end mt-1">
        <a
-         href="https://www.alhameen.xyz/"
+         href="https://www.alhameen.site/"
          target="_blank"
          className="w-max underline underline-offset-2 decoration-1"
        >
